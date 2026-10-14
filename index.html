@@ -321,7 +321,7 @@ details[open] .chev{transform:rotate(45deg)}
 <div style="background: #C0362C; color: #FFFFFF; border-radius: 12px; padding: 12px; text-align: center; margin-bottom: 18px"><div style="font-size: 13px; font-weight: 800">OFERTA POR TEMPO LIMITADO</div><div style="font-size: 13px">Preço de lançamento válido até HOJE, <span data-hoje>--/--</span>, às 23:59</div><div style="margin-top:6px;font-size:22px;font-weight:800;font-variant-numeric:tabular-nums" data-cd>--:--:--</div><div style="font-size:11px;opacity:.85">horas · minutos · segundos</div></div>
 
 <div id="premium" style="background: #FFFFFF; border: 3px solid #087F7C; border-radius: 18px; padding: 20px 16px; text-align: center; box-shadow: 0 12px 28px rgba(8,127,124,0.18)">
-<div style="display: inline-block; background: #087F7C; color: #FFFFFF; font-size: 12px; font-weight: 800; padding: 6px 12px; border-radius: 999px">MAIS ESCOLHIDO</div>
+<div style="display: inline-block; background: #087F7C; color: #FFFFFF; font-size: 12px; font-weight: 800; padding: 6px 12px; border-radius: 999px">ACESSO COMPLETO + 4 BÔNUS</div>
 <div style="font-size: 12px; font-weight: 700; color: #5B7480; margin-top: 12px">Acesso Completo</div>
 <div style="font-size: 20px; font-weight: 800; margin: 4px 0 12px; line-height: 1.25">Plano Premium Atlas Visual da Farmacologia Odontológica</div>
 <img class="om-img" src="img/offer-mockup.webp" alt="Atlas completo com os 4 bônus" loading="lazy">
@@ -453,6 +453,40 @@ details[open] .chev{transform:rotate(45deg)}
   });
 })();
 
+</script>
+
+<!-- Notificação de compras: mostra SOMENTE compras reais.
+     Preencha com vendas reais (primeiro nome, cidade opcional, data/hora da compra) ou conecte à API da plataforma.
+     Lista vazia = nenhuma notificação aparece. -->
+<script>
+window.COMPRAS_RECENTES = [
+  /* exemplo de formato (apague e use vendas reais):
+  { nome: "Maria", cidade: "Campinas, SP", quando: "2026-10-14T12:40:00-03:00" }, */
+];
+</script>
+<div id="cpToast" role="status" aria-live="polite" style="display:none;position:fixed;left:12px;bottom:12px;z-index:60;max-width:300px;background:#FFFFFF;border:1px solid #C9E8E2;border-radius:14px;box-shadow:0 12px 30px rgba(6,48,61,0.22);padding:10px 34px 10px 10px;font-family:inherit;align-items:center;gap:10px">
+  <img src="img/capa.webp" alt="" style="width:40px;height:53px;object-fit:cover;border-radius:4px;flex:none">
+  <div style="font-size:13px;line-height:1.35;color:#06303D"><b id="cpNome"></b> <span id="cpCidade" style="color:#5B7480"></span><br>comprou o <b>Atlas Visual</b><br><span id="cpQuando" style="font-size:11px;color:#087F7C;font-weight:700"></span></div>
+  <button id="cpX" aria-label="Fechar" style="position:absolute;top:4px;right:6px;border:0;background:none;font-size:18px;color:#8FA9AE;cursor:pointer;line-height:1">×</button>
+</div>
+<style>#cpToast.on{display:flex !important;animation:cpIn .35s ease-out}@keyframes cpIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}</style>
+<script>
+(function(){
+  var L=(window.COMPRAS_RECENTES||[]).filter(function(c){ return c && c.nome && c.quando && !isNaN(new Date(c.quando)); });
+  if(!L.length) return;
+  L.sort(function(a,b){ return new Date(b.quando)-new Date(a.quando); });
+  var box=document.getElementById('cpToast'), i=0, fechado=false;
+  function rel(d){ var m=Math.max(1,Math.round((Date.now()-new Date(d))/60000));
+    if(m<2) return 'agora mesmo'; if(m<60) return 'há '+m+' minutos'; var h=Math.round(m/60); if(h<24) return 'há '+h+(h>1?' horas':' hora');
+    var dd=Math.round(h/24); return 'há '+dd+(dd>1?' dias':' dia'); }
+  function show(){ if(fechado) return; var c=L[i%L.length]; i++;
+    document.getElementById('cpNome').textContent=c.nome;
+    document.getElementById('cpCidade').textContent=c.cidade?('· '+c.cidade):'';
+    document.getElementById('cpQuando').textContent=rel(c.quando);
+    box.classList.add('on'); setTimeout(function(){ box.classList.remove('on'); },6000); }
+  document.getElementById('cpX').addEventListener('click',function(){ fechado=true; box.classList.remove('on'); });
+  setTimeout(function(){ show(); setInterval(show,25000); },10000);
+})();
 </script>
 </body>
 </html>
