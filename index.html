@@ -486,7 +486,7 @@ window.COMPRAS_RECENTES = [
     document.getElementById('cpQuando').textContent=rel(c.quando);
     box.classList.add('on'); setTimeout(function(){ box.classList.remove('on'); },6000); }
   document.getElementById('cpX').addEventListener('click',function(){ fechado=true; box.classList.remove('on'); });
-  setTimeout(function(){ show(); setInterval(show,25000); },10000);
+  setTimeout(show,10000); /* aparece uma única vez */
 })();
 </script>
 </body>
