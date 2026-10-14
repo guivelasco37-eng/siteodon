@@ -467,7 +467,7 @@ window.COMPRAS_RECENTES = [
 </script>
 <div id="cpToast" role="status" aria-live="polite" style="display:none;position:fixed;left:12px;bottom:12px;z-index:60;max-width:300px;background:#FFFFFF;border:1px solid #C9E8E2;border-radius:14px;box-shadow:0 12px 30px rgba(6,48,61,0.22);padding:10px 34px 10px 10px;font-family:inherit;align-items:center;gap:10px">
   <img src="img/capa.webp" alt="" style="width:40px;height:53px;object-fit:cover;border-radius:4px;flex:none">
-  <div style="font-size:13px;line-height:1.35;color:#06303D"><b id="cpNome"></b> <span id="cpCidade" style="color:#5B7480"></span><br>comprou o <b>Atlas Visual</b><br><span id="cpQuando" style="font-size:11px;color:#087F7C;font-weight:700"></span></div>
+  <div style="font-size:13px;line-height:1.35;color:#06303D"><b id="cpNome"></b> <span id="cpCidade" style="color:#5B7480"></span><br>comprou o <b>Atlas Visual</b></div>
   <button id="cpX" aria-label="Fechar" style="position:absolute;top:4px;right:6px;border:0;background:none;font-size:18px;color:#8FA9AE;cursor:pointer;line-height:1">×</button>
 </div>
 <style>#cpToast.on{display:flex !important;animation:cpIn .35s ease-out}@keyframes cpIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}</style>
@@ -483,7 +483,6 @@ window.COMPRAS_RECENTES = [
   function show(){ if(fechado) return; var c=L[i%L.length]; i++;
     document.getElementById('cpNome').textContent=c.nome;
     document.getElementById('cpCidade').textContent=c.cidade?('· '+c.cidade):'';
-    document.getElementById('cpQuando').textContent=rel(c.quando);
     box.classList.add('on'); setTimeout(function(){ box.classList.remove('on'); },6000); }
   document.getElementById('cpX').addEventListener('click',function(){ fechado=true; box.classList.remove('on'); });
   setTimeout(show,10000); /* aparece uma única vez */
