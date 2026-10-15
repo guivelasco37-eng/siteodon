@@ -145,25 +145,30 @@ h1 .red{color:#DC2626}
 .sticky a{background:#00d769;color:#fff;text-decoration:none;font-weight:800;font-size:13px;padding:12px 14px;border-radius:10px;white-space:nowrap}
 .disc{padding:18px 20px 10px;font-size:11px;line-height:1.5;color:#6A8088;text-align:center}
 @media (prefers-reduced-motion:reduce){.bar i,.st.now b,.agora i{animation:none}}
+
+.stp{display:flex;flex-direction:column;gap:10px}
+.stp .s{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #D7EAE6;border-radius:14px;padding:12px 14px}
+.stp .s b.n{flex:none;width:34px;height:34px;border-radius:50%;background:#087F7C;color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px}
+.stp .s div b{display:block;font-size:14px}.stp .s div span{font-size:13px;color:#5B7480;line-height:1.45}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.chips span{background:#fff;border:1px solid #C9E8E2;border-radius:99px;padding:8px 12px;font-size:13px;font-weight:700;color:#06303D}
+.quote{background:#06303D;color:#fff;border-radius:16px;padding:18px;font-size:15px;line-height:1.55;text-align:center}
+.quote b{color:#5FD3C4}
+.mk2{border-radius:16px;overflow:hidden;background:radial-gradient(circle at 75% 20%,#0B6E6A 0%,#05303C 62%);position:relative}
+.mk2 svg{display:block;width:100%;height:auto}
+
+.ribbon{background:linear-gradient(90deg,#B42318,#DC2626)}
 </style>
 </head>
 <body>
 <div class="wrap">
-
 <div class="ok"><i><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Seu pedido do Atlas Visual foi recebido</div>
-
-<div class="steps">
-  <div class="st done"><b>✓</b>Compra</div>
-  <div class="st now"><b>2</b>Última chance</div>
-  <div class="st"><b>3</b>Acesso</div>
-</div>
-
+<div class="steps"><div class="st done"><b>✓</b>Compra</div><div class="st now"><b>2</b>Última chance</div><div class="st "><b>3</b>Acesso</div></div>
 <div class="top">
   <small>Seu pedido está quase concluído.</small>
   <div class="bar"><i id="pbar" style="width:75%"></i></div>
   <div class="falta">Falta apenas 10% para concluir.</div>
 </div>
-
 <section class="f1">
   <h1><span class="red">✋ ESPERE!</span> ANTES DE IR,<br>UMA <span class="hl"><span class="red">ÚLTIMA CHANCE</span></span>&nbsp;👇</h1>
   <p class="sub">Entendemos, talvez R$ 19,90 não fosse o momento. Por isso, <span class="only">somente agora</span>, liberamos o <span class="prod">Kit Primeira Clínica</span> com <b>50% de desconto</b>. É a última vez que esta oferta aparece.</p>
@@ -182,19 +187,7 @@ h1 .red{color:#DC2626}
 
   </div>
 </section>
-
-<section class="sec" style="background:#FAFDFC">
-  <h2>Por menos de R$ 10,<br>atenda com segurança</h2>
-  <p class="lead">O mesmo kit completo, pela metade do preço.</p>
-  <div class="vs"><div class="sem"><h3>SEM O KIT</h3><p>✕ <span>Paciente diz "tomo remédio de pressão" e você não sabe o que muda</span></p><p>✕ <span>Anamnese incompleta, feita de cabeça</span></p><p>✕ <span>Confunde a numeração na hora de anotar</span></p><p>✕ <span>Insegurança na primeira clínica</span></p></div><div class="com"><h3>COM O KIT</h3><p>✓ <span>Sabe o que cada resposta muda no atendimento</span></p><p>✓ <span>Ficha pronta, completa e padronizada</span></p><p>✓ <span>Mapa e odontograma sempre à mão</span></p><p>✓ <span>Atende com mais segurança desde o 1º paciente</span></p></div></div>
-</section>
-
-<section class="sec">
-  <h2>O que você recebe</h2>
-  <p class="lead">Tudo em PDF, no seu e-mail e WhatsApp, logo após a confirmação.</p>
-  <div class="items"><div class="it"><div class="ic" style="background:#E6F5F2">📋</div><div><b>Ficha de anamnese pronta</b><span>3 páginas para imprimir: história médica, medicamentos, alergias e sinais vitais.</span></div></div><div class="it"><div class="ic" style="background:#EEF3FF">🔎</div><div><b>Decodificador de respostas</b><span>O que cada "SIM" muda na anestesia, no sangramento e na receita (20 condições).</span></div></div><div class="it"><div class="ic" style="background:#FFF1E0">💊</div><div><b>Medicamentos de uso contínuo</b><span>26 grupos de remédios e o que cada um exige de você no atendimento.</span></div></div><div class="it"><div class="ic" style="background:#F3EEFF">🦷</div><div><b>Mapa dos Dentes</b><span>Numeração FDI, faces, raízes, canais e cronologia de erupção.</span></div></div><div class="it"><div class="ic" style="background:#FFECEF">🗂️</div><div><b>Odontograma para imprimir</b><span>Permanentes e decíduos, com legenda dos símbolos.</span></div></div><div class="it"><div class="ic" style="background:#E8F7EE">💉</div><div><b>Qual anestesia para cada dente</b><span>Nervo, técnica e os detalhes que fazem a anestesia falhar.</span></div></div></div>
-</section>
-
+<section class="sec" style="background:#FAFDFC"><h2>Por menos de R$ 10,<br>atenda com segurança</h2><p class="lead">O mesmo kit completo, pela metade do preço.</p><div class="vs"><div class="sem"><h3>SEM O KIT</h3><p>✕ <span>Paciente diz "tomo remédio de pressão" e você não sabe o que muda</span></p><p>✕ <span>Anamnese incompleta, feita de cabeça</span></p><p>✕ <span>Confunde a numeração na hora de anotar</span></p><p>✕ <span>Insegurança na primeira clínica</span></p></div><div class="com"><h3>COM O KIT</h3><p>✓ <span>Sabe o que cada resposta muda no atendimento</span></p><p>✓ <span>Ficha pronta, completa e padronizada</span></p><p>✓ <span>Mapa e odontograma sempre à mão</span></p><p>✓ <span>Atende com mais segurança desde o 1º paciente</span></p></div></div></section><section class="sec" style="background:#FFFFFF"><h2>O que você recebe</h2><p class="lead">Tudo em PDF, no seu e-mail e WhatsApp, logo após a confirmação.</p><div class="items"><div class="it"><div class="ic" style="background:#E6F5F2">📋</div><div><b>Ficha de anamnese pronta</b><span>3 páginas para imprimir: história médica, medicamentos, alergias e sinais vitais.</span></div></div><div class="it"><div class="ic" style="background:#EEF3FF">🔎</div><div><b>Decodificador de respostas</b><span>O que cada "SIM" muda na anestesia, no sangramento e na receita (20 condições).</span></div></div><div class="it"><div class="ic" style="background:#FFF1E0">💊</div><div><b>Medicamentos de uso contínuo</b><span>26 grupos de remédios e o que cada um exige de você no atendimento.</span></div></div><div class="it"><div class="ic" style="background:#F3EEFF">🦷</div><div><b>Mapa dos Dentes</b><span>Numeração FDI, faces, raízes, canais e cronologia de erupção.</span></div></div><div class="it"><div class="ic" style="background:#FFECEF">🗂️</div><div><b>Odontograma para imprimir</b><span>Permanentes e decíduos, com legenda dos símbolos.</span></div></div><div class="it"><div class="ic" style="background:#E8F7EE">💉</div><div><b>Qual anestesia para cada dente</b><span>Nervo, técnica e os detalhes que fazem a anestesia falhar.</span></div></div></div></section>
 <section class="f2" id="oferta">
   <div class="card">
     <div class="ribbon">⚡ ÚLTIMA CHANCE · 50% OFF</div>
@@ -221,28 +214,24 @@ h1 .red{color:#DC2626}
               fontSize: "17px",
               borderRadius: "10px"
           },
-          refusalLinkUrl: "https://wiapy.com/login",
+          refusalLinkUrl: "https://solucaocerta.site/upsell2",
           refusalLinkText: "Recusar esta oferta",
           refusalLinkColor: "#000000"
       });
-      else document.getElementById("wiapy_upsell").innerHTML = '<a class="btn" href="https://pay.wiapy.com/checkout/undefined">SIM, EU ACEITO ESSA OFERTA</a><a class="nao" href="https://wiapy.com/login">Recusar esta oferta</a>';
+      else document.getElementById("wiapy_upsell").innerHTML = '<a class="btn" href="https://pay.wiapy.com/checkout/undefined">SIM, EU ACEITO ESSA OFERTA</a><a class="nao" href="https://solucaocerta.site/upsell2">Recusar esta oferta</a>';
       </script>
       <div class="trust"><span>🔒 Pagamento seguro</span><span>⚡ Acesso imediato</span><span>📱 E-mail e WhatsApp</span></div>
       <div class="seal"><div class="s7"><b>7</b><small>DIAS</small></div><div><b>Garantia de 7 dias.</b> Se não gostar, é só pedir o reembolso dentro do prazo. Sem burocracia.</div></div>
     </div>
   </div>
 </section>
-
 <section class="sec">
   <h2>Dúvidas rápidas</h2>
   <div class="faq" style="margin-top:14px"><details><summary>Como vou receber?</summary><p>Em PDF, no seu e-mail e no WhatsApp, logo após a confirmação do pagamento.</p></details><details><summary>É diferente do Atlas que comprei?</summary><p>Sim. O Atlas é farmacologia. O Kit Primeira Clínica é o atendimento na prática: anamnese, o que cada condição do paciente muda, mapa dos dentes e odontograma.</p></details><details><summary>Serve para quem ainda é estudante?</summary><p>Sim. Foi pensado justamente para quem está começando a clínica ou acabou de se formar.</p></details><details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia para pedir o reembolso.</p></details></div>
 </section>
-
 <div class="disc">Material educacional elaborado com base em literatura científica e referências de odontologia. Não substitui avaliação profissional, protocolos institucionais nem o julgamento clínico do cirurgião-dentista.</div>
 </div>
-
 <div class="sticky" id="sticky"><div class="in"><img src="/img/kitmock.webp" alt="" style="width:44px;height:44px;border-radius:8px;object-fit:cover;flex:none"><div class="p">Kit Primeira Clínica<b>R$ 9,90</b></div><a href="#oferta" id="stk">QUERO 50% OFF</a></div></div>
-
 <script>
 (function(){
   function pad(n){return (n<10?'0':'')+n;}
