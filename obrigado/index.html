@@ -175,15 +175,12 @@ var LINK_UPSELL = "";
   if(!dl){ dl=Date.now()+15*60*1000; try{localStorage.setItem(KEY,String(dl));}catch(e){} }
   var tm=document.getElementById('tm');
   function encerrar(){
-    var at=document.querySelector('.ativa');
-    at.innerHTML='<div style="font-size:18px;font-weight:800;margin-bottom:6px">Esta oferta expirou</div><div style="font-size:14px;line-height:1.6;color:#3B5560">Seu acesso ao <b>Atlas Visual da Farmacologia Odontológica</b> já foi enviado para o seu e-mail.</div>';
+    document.querySelector('.timer').innerHTML='⚠️ <b style="font-size:16px;margin:0">Últimos instantes!</b><br>Compre agora para garantir esse valor antes que a oferta saia do ar.';
   }
-  function tick(){ var s=Math.max(0,Math.floor((dl-Date.now())/1000)); tm.textContent=pad(Math.floor(s/60))+':'+pad(s%60); if(s<=0){ clearInterval(iv); encerrar(); } }
+  function tick(){ var s=Math.max(0,Math.floor((dl-Date.now())/1000)); if(s<=0){ clearInterval(iv); encerrar(); return; } tm.textContent=pad(Math.floor(s/60))+':'+pad(s%60); }
   var iv=setInterval(tick,1000); tick();
 
-  document.getElementById('nao').addEventListener('click',function(){
-    document.querySelector('.ativa').style.display='none'; document.getElementById('fim').style.display='block';
-  });
+  document.getElementById('nao').addEventListener('click',function(){ location.href='/downsell'+location.search; });
 
   /* carrossel */
   var tr=document.getElementById('ctrack'), slides=tr.children, dots=document.getElementById('cdots');
