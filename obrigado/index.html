@@ -157,6 +157,40 @@ h1 .red{color:#DC2626}
 .mk2{border-radius:16px;overflow:hidden;background:radial-gradient(circle at 75% 20%,#0B6E6A 0%,#05303C 62%);position:relative}
 .mk2 svg{display:block;width:100%;height:auto}
 
+/* ---- card de oferta premium ---- */
+.f2{background:linear-gradient(180deg,#E9F6F3,#D6EEE9)}
+.card{background:linear-gradient(165deg,#073A47 0%,#05303C 45%,#0A4C57 100%);border:0;color:#fff;box-shadow:0 24px 60px rgba(5,48,60,.45);animation:glow 2.8s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 24px 60px rgba(5,48,60,.45),0 0 0 2px rgba(95,211,196,.35)}50%{box-shadow:0 24px 60px rgba(5,48,60,.45),0 0 0 2px rgba(95,211,196,.9),0 0 28px rgba(95,211,196,.35)}}
+.card .cbody{position:relative}
+.corner{position:absolute;top:58px;right:8px;z-index:2;width:66px;height:66px;border-radius:50%;background:#FFC857;color:#05303C;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;line-height:1;transform:rotate(12deg);box-shadow:0 8px 18px rgba(0,0,0,.35)}
+.corner b{font-size:18px}.corner small{font-size:9px;letter-spacing:.08em}
+.card .agora{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:#FFD2CC}
+.card .pimg{box-shadow:0 18px 36px rgba(0,0,0,.45),0 0 0 1px rgba(95,211,196,.35)}
+.card .pname b{color:#fff;font-size:21px}
+.card .pname span{color:#BFE3DC}
+.card .tags i{background:rgba(255,255,255,.07);border-color:rgba(95,211,196,.35);color:#E6F7F4}
+.card .inc{margin:16px 0 0;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);text-align:left;display:flex;flex-direction:column;gap:7px;font-size:13.5px;color:#E6F7F4}
+.card .inc div{display:flex;gap:8px;align-items:flex-start}
+.card .inc div:before{content:"✓";flex:none;width:18px;height:18px;border-radius:50%;background:#5FD3C4;color:#05303C;font-weight:900;font-size:11px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.card .priceline{margin-top:18px}
+.card .de{color:#8FB8B4}
+.card .save{background:#FF6F59;color:#fff}
+.card .preco{color:#5FD3C4;text-shadow:0 0 24px rgba(95,211,196,.45);font-size:58px}
+.card .unico{color:#BFE3DC}
+.card .timer{background:rgba(255,255,255,.06);border:1px solid rgba(255,200,87,.45)}
+.card .timer .tl{color:#FFC857}
+.card .digits span.d{background:#fff;color:#05303C}
+.card .digits em{color:#fff}.card .digits small{color:#BFE3DC}
+.card .tbar{background:rgba(255,255,255,.12)}
+.card .timer.last{background:rgba(220,38,38,.18);border-color:rgba(255,111,89,.6);color:#FFD2CC}
+.card .info{color:#D7EFEB}.card .info b{color:#fff}
+.card .nao{color:#BFE3DC}
+.card .trust{color:#BFE3DC}
+.card .seal{border-color:rgba(255,255,255,.22);color:#D7EFEB}
+.card .seal b{color:#fff}
+.card .seal .s7{background:#5FD3C4;color:#05303C}
+@media (prefers-reduced-motion:reduce){.card{animation:none}}
+
 .ribbon{background:linear-gradient(90deg,#B42318,#DC2626)}
 </style>
 </head>
@@ -192,8 +226,10 @@ h1 .red{color:#DC2626}
   <div class="card">
     <div class="ribbon">🔥 OFERTA ÚNICA · SÓ NESTA PÁGINA</div>
     <div class="cbody">
+      <div class="corner"><b>79%</b><small>OFF</small></div>
       <span class="agora"><i></i>APENAS AGORA · <span id="agora">--/-- às --:--</span></span>
       <div class="pimg"><img src="/img/kitmock.webp" alt="Kit Primeira Clínica"></div><div class="pname"><b>Kit Primeira Clínica</b><span>Kit Anamnese Completa + Mapa dos Dentes</span><div class="tags"><i>📋 Anamnese</i><i>🔎 Decodificador</i><i>🦷 Mapa dos Dentes</i><i>🗂️ Odontograma</i></div></div>
+      <div class="inc"><div>Ficha de anamnese para imprimir</div><div>Decodificador visual de 20 condições</div><div>Mapa dos Dentes ilustrado</div><div>Odontograma + inervação por região</div><div>Entrega imediata no e-mail e WhatsApp</div></div>
       <div class="priceline"><span class="de">R$ 97,00</span><span class="save">ECONOMIZE 79%</span></div>
       <div class="preco"><small>R$</small>19,90</div>
       <div class="unico">pagamento único · acesso imediato</div>
@@ -216,7 +252,7 @@ h1 .red{color:#DC2626}
           },
           refusalLinkUrl: "https://solucaocerta.site/downsell",
           refusalLinkText: "Recusar esta oferta",
-          refusalLinkColor: "#000000"
+          refusalLinkColor: "#BFE3DC"
       });
       else document.getElementById("wiapy_upsell").innerHTML = '<a class="btn" href="https://pay.wiapy.com/checkout/6ad0eac89b597b6a2b64fce4">SIM, EU ACEITO ESSA OFERTA</a><a class="nao" href="https://solucaocerta.site/downsell">Recusar esta oferta</a>';
       </script>
