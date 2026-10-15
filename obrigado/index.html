@@ -26,33 +26,38 @@
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#E6F2F0;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#06303D}
-.wrap{max-width:520px;margin:0 auto;background:#FFFFFF;min-height:100vh}
-.top{padding:18px 20px 6px}
+body{margin:0;background:#E6F2F0;font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#06303D;-webkit-font-smoothing:antialiased}
+.wrap{max-width:520px;margin:0 auto;background:#FFFFFF;min-height:100vh;padding-bottom:84px}
+.ok{background:#E8F7EE;color:#15803D;font-size:13px;font-weight:700;text-align:center;padding:9px 16px;display:flex;align-items:center;justify-content:center;gap:8px}
+.ok i{width:18px;height:18px;border-radius:50%;background:#15803D;display:inline-flex;align-items:center;justify-content:center}
+.steps{display:flex;justify-content:space-between;padding:16px 20px 4px;position:relative}
+.steps:before{content:"";position:absolute;left:44px;right:44px;top:30px;height:3px;background:#F3D3CF}
+.st{position:relative;z-index:1;text-align:center;flex:1;font-size:11px;font-weight:700;color:#8FA9AE}
+.st b{display:flex;margin:0 auto 6px;width:30px;height:30px;border-radius:50%;align-items:center;justify-content:center;background:#fff;border:3px solid #F3D3CF;color:#C0362C;font-size:13px}
+.st.done{color:#15803D}.st.done b{background:#15803D;border-color:#15803D;color:#fff}
+.st.now{color:#C0362C}.st.now b{background:#DC2626;border-color:#DC2626;color:#fff;box-shadow:0 0 0 6px rgba(220,38,38,.15);animation:ping 1.6s infinite}
+@keyframes ping{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.35)}50%{box-shadow:0 0 0 9px rgba(220,38,38,0)}}
+.top{padding:10px 20px 4px}
 .top small{display:block;text-align:right;font-size:13px;font-weight:800;color:#C0362C;margin-bottom:6px}
 .bar{height:16px;border-radius:99px;background:#FBE1DE;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.08)}
-.bar i{display:block;height:100%;width:75%;border-radius:99px;background-color:#DC2626;background-image:linear-gradient(45deg,rgba(255,255,255,.22) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.22) 50%,rgba(255,255,255,.22) 75%,transparent 75%,transparent);background-size:22px 22px;animation:stripes .8s linear infinite;box-shadow:0 0 12px rgba(220,38,38,.45)}
+.bar i{display:block;height:100%;border-radius:99px;background-color:#DC2626;background-image:linear-gradient(45deg,rgba(255,255,255,.22) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.22) 50%,rgba(255,255,255,.22) 75%,transparent 75%,transparent);background-size:22px 22px;animation:stripes .8s linear infinite;box-shadow:0 0 12px rgba(220,38,38,.45);transition:width 1.2s ease}
 @keyframes stripes{from{background-position:0 0}to{background-position:22px 0}}
 .top .falta{text-align:center;font-size:13px;font-weight:700;color:#C0362C;margin-top:7px}
 .f1{padding:18px 20px 26px;text-align:center}
 h1{margin:6px 0 14px;font-size:27px;line-height:1.22;font-weight:800}
-h1 .ok{color:#15803D}
+h1 .g{color:#15803D}
 h1 .hl{background:linear-gradient(transparent 55%,#FFC857 55%);padding:0 3px}
 h1 .red{color:#DC2626}
-.sub .only{color:#DC2626;font-weight:800}
-.sub .prod{color:#087F7C;font-weight:800}
 .sub{margin:0 0 20px;font-size:15px;line-height:1.6;color:#3B5560}
-.sub b{color:#06303D}
-/* carrossel */
+.sub b{color:#06303D}.sub .only{color:#DC2626;font-weight:800}.sub .prod{color:#087F7C;font-weight:800}
 .car{position:relative}
 .ctrack{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;scrollbar-width:none}
 .ctrack::-webkit-scrollbar{display:none}
 .slide{flex:0 0 100%;scroll-snap-align:center}
 .slide img{width:100%;height:auto;border-radius:16px;display:block}
 .cdots{display:flex;justify-content:center;gap:8px;margin-top:10px}
-.cdots button{width:9px;height:9px;border-radius:50%;border:0;background:#C9E8E2;padding:0}
+.cdots button{width:9px;height:9px;border-radius:50%;border:0;background:#C9E8E2;padding:0;cursor:pointer}
 .cdots button.on{background:#087F7C;width:22px;border-radius:99px}
-/* mockup desenhado em CSS */
 .mk{position:relative;height:380px;border-radius:16px;overflow:hidden;background:radial-gradient(circle at 75% 20%,#0B6E6A 0%,#05303C 60%)}
 .mk:before{content:"";position:absolute;right:-40px;top:60px;width:280px;height:280px;border-radius:50%;background:rgba(95,211,196,.18);filter:blur(30px)}
 .cover{position:absolute;left:22px;top:46px;width:170px;height:228px;border-radius:4px 10px 10px 4px;background:#06303D;box-shadow:0 22px 40px rgba(0,0,0,.45);transform:rotate(-6deg);padding:16px 14px;text-align:left;color:#fff;border-left:7px solid #031E26}
@@ -69,41 +74,96 @@ h1 .red{color:#DC2626}
 .scr .samu{margin:10px 9px 0;background:#06303D;color:#FFC857;border-radius:8px;text-align:center;font-size:10px;font-weight:800;padding:6px}
 .mk .lbl{position:absolute;left:0;right:0;bottom:12px;text-align:center}
 .mk .lbl span{display:inline-block;background:#FFC857;color:#05303C;font-size:9px;white-space:nowrap;font-weight:800;letter-spacing:.06em;padding:6px 12px;border-radius:99px}
-/* dobra 2 */
-.f2{padding:26px 20px 34px;background:#EEF8F6}
-.box{background:#fff;border:3px solid #087F7C;border-radius:18px;padding:20px 16px;text-align:center;box-shadow:0 12px 28px rgba(8,127,124,.16)}
-.agora{display:inline-block;background:#C0362C;color:#fff;font-size:12px;font-weight:800;letter-spacing:.06em;padding:7px 12px;border-radius:99px}
-.leve{margin:14px 0 4px;font-size:17px;font-weight:800;line-height:1.35}
-.de{font-size:14px;color:#5B7480}
-.de s{color:#B42318}
-.preco{font-size:46px;font-weight:800;color:#087F7C;line-height:1.05;margin:2px 0 4px}
-.timer{margin:14px auto 0;background:#FFF4D1;border:1px solid #F3D27A;border-radius:12px;padding:10px;font-size:14px;font-weight:700;color:#5A3D00}
-.timer b{font-size:22px;color:#B42318;font-variant-numeric:tabular-nums;margin-left:4px}
-.info{margin:14px 0 16px;font-size:14px;line-height:1.55;color:#3B5560}
-.btn{display:block;background:#15803D;color:#fff;text-decoration:none;font-weight:800;font-size:16px;padding:18px 14px;border-radius:12px;box-shadow:0 8px 20px rgba(21,128,61,.32);animation:pulse 1.6s ease-in-out infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
-.seg{font-size:12px;color:#5B7480;margin-top:10px}
-.nao{display:block;margin-top:18px;font-size:13px;color:#5B7480;text-decoration:underline;cursor:pointer;background:none;border:0;width:100%;font-family:inherit}
-.fim{display:none;text-align:center;padding:10px 4px}
-.disc{padding:18px 20px 28px;font-size:11px;line-height:1.5;color:#6A8088;text-align:center}
-@media (prefers-reduced-motion:reduce){.btn,.bar i{animation:none}}
+
+.mk .lbl span{white-space:nowrap}
+.sec{padding:30px 20px}
+.sec h2{margin:0 0 6px;font-size:22px;font-weight:800;text-align:center;line-height:1.25}
+.sec .lead{margin:0 0 18px;text-align:center;font-size:14px;color:#5B7480}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.vs>div{border-radius:14px;padding:14px 12px;font-size:13px;line-height:1.45}
+.vs .sem{background:#FFF1EF;border:1px solid #F5D2CE}
+.vs .com{background:#E8F7EE;border:1px solid #BFE8CD}
+.vs h3{margin:0 0 8px;font-size:13px;letter-spacing:.06em}
+.vs .sem h3{color:#C0362C}.vs .com h3{color:#15803D}
+.vs p{margin:0 0 7px;display:flex;gap:6px}
+.items{display:flex;flex-direction:column;gap:10px}
+.it{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid #D7EAE6;border-radius:14px;padding:12px 14px;box-shadow:0 4px 12px rgba(6,48,61,.05)}
+.it .ic{flex:none;width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.it b{display:block;font-size:14px;margin-bottom:2px}
+.it span{font-size:13px;color:#5B7480;line-height:1.45}
+.f2{padding:28px 16px 34px;background:linear-gradient(180deg,#EEF8F6,#E2F2EF)}
+.card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 18px 40px rgba(6,48,61,.18);border:2px solid #087F7C;position:relative}
+.ribbon{background:linear-gradient(90deg,#B42318,#DC2626);color:#fff;text-align:center;font-size:12px;font-weight:800;letter-spacing:.08em;padding:10px 12px}
+.cbody{padding:20px 16px 18px;text-align:center}
+.agora{display:inline-flex;align-items:center;gap:6px;background:#FFF1EF;color:#B42318;font-size:12px;font-weight:800;padding:6px 12px;border-radius:99px;border:1px solid #F5D2CE}
+.agora i{width:8px;height:8px;border-radius:50%;background:#DC2626;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.25}}
+.prodrow{display:flex;gap:12px;align-items:center;text-align:left;margin:16px 0 4px;padding:12px;background:#F4FAF9;border-radius:14px}
+.prodrow .mini{flex:none;width:58px;height:76px;border-radius:4px 8px 8px 4px;background:#06303D;border-left:5px solid #031E26;color:#fff;font-family:Lora,serif;font-weight:700;font-size:10px;line-height:1.1;padding:8px 6px;box-shadow:0 6px 14px rgba(0,0,0,.25)}
+.prodrow b{display:block;font-size:16px}
+.prodrow span{font-size:12px;color:#5B7480}
+.priceline{margin-top:14px;display:flex;align-items:center;justify-content:center;gap:10px}
+.de{font-size:15px;color:#8FA9AE;text-decoration:line-through}
+.save{background:#FFC857;color:#05303C;font-size:12px;font-weight:800;padding:5px 10px;border-radius:99px}
+.preco{font-size:52px;font-weight:800;color:#087F7C;line-height:1;margin:6px 0 2px;letter-spacing:-.02em}
+.preco small{font-size:22px;vertical-align:top;margin-right:2px}
+.unico{font-size:12px;color:#5B7480}
+.timer{margin:16px 0 0;background:#FFF8E1;border:1px solid #F3D27A;border-radius:14px;padding:12px}
+.timer .tl{font-size:12px;font-weight:800;letter-spacing:.06em;color:#8A5A00}
+.digits{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:8px}
+.digits span.d{min-width:54px;background:#06303D;color:#fff;font-size:28px;font-weight:800;border-radius:10px;padding:6px 8px;font-variant-numeric:tabular-nums;box-shadow:inset 0 -3px 0 rgba(0,0,0,.25)}
+.digits em{font-style:normal;font-size:24px;font-weight:800;color:#06303D}
+.digits small{display:block;font-size:9px;font-weight:700;letter-spacing:.1em;color:#5B7480;margin-top:6px}
+.tbar{height:6px;background:#F3E4B8;border-radius:99px;margin-top:10px;overflow:hidden}
+.tbar i{display:block;height:100%;width:100%;background:#DC2626;border-radius:99px;transition:width 1s linear}
+.timer.last{background:#FFF1EF;border-color:#F5D2CE;color:#B42318;font-size:14px;line-height:1.45;font-weight:600}
+.info{margin:14px 0 14px;font-size:13.5px;line-height:1.55;color:#3B5560}
+.info b{color:#06303D}
+#wiapy_upsell{margin-top:4px}
+.btn{display:block;background:#00d769;color:#fff;text-decoration:none;font-weight:800;font-size:17px;padding:18px 14px;border-radius:10px}
+.nao{display:block;margin-top:14px;font-size:13px;color:#000;text-decoration:underline}
+.trust{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:14px;font-size:11.5px;color:#5B7480;font-weight:600}
+.trust span{display:flex;align-items:center;gap:5px}
+.seal{display:flex;gap:12px;align-items:center;text-align:left;margin-top:16px;padding:12px;border:1px dashed #9ED2C9;border-radius:14px;font-size:12.5px;line-height:1.45;color:#3B5560}
+.seal .s7{flex:none;width:52px;height:52px;border-radius:50%;background:#087F7C;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;line-height:1}
+.seal .s7 b{font-size:20px}.seal .s7 small{font-size:8px;letter-spacing:.08em}
+.faq{display:flex;flex-direction:column;gap:8px}
+.faq details{background:#fff;border:1px solid #D7EAE6;border-radius:12px;padding:13px 14px}
+.faq summary{list-style:none;cursor:pointer;font-weight:700;font-size:14px;display:flex;justify-content:space-between;gap:10px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";color:#087F7C;font-weight:800;font-size:18px;line-height:1}
+.faq details[open] summary:after{content:"–"}
+.faq p{margin:8px 0 0;font-size:13.5px;line-height:1.55;color:#3B5560}
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:40;transform:translateY(110%);transition:transform .35s ease}
+.sticky.on{transform:none}
+.sticky .in{max-width:520px;margin:0 auto;background:#06303D;color:#fff;display:flex;align-items:center;gap:10px;padding:10px 14px;box-shadow:0 -8px 24px rgba(0,0,0,.2)}
+.sticky .p{flex:1;font-size:12px;line-height:1.3}.sticky .p b{font-size:18px;color:#5FD3C4;display:block}
+.sticky a{background:#00d769;color:#fff;text-decoration:none;font-weight:800;font-size:13px;padding:12px 14px;border-radius:10px;white-space:nowrap}
+.disc{padding:18px 20px 10px;font-size:11px;line-height:1.5;color:#6A8088;text-align:center}
+@media (prefers-reduced-motion:reduce){.bar i,.st.now b,.agora i{animation:none}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<!-- DOBRA 1 -->
+<div class="ok"><i><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Seu pedido do Atlas Visual foi recebido</div>
+
+<div class="steps">
+  <div class="st done"><b>✓</b>Compra</div>
+  <div class="st now"><b>2</b>Oferta especial</div>
+  <div class="st"><b>3</b>Acesso</div>
+</div>
+
 <div class="top">
   <small>Seu pedido está quase concluído.</small>
-  <div class="bar"><i></i></div>
+  <div class="bar"><i id="pbar" style="width:60%"></i></div>
   <div class="falta">Falta apenas 25% para concluir.</div>
 </div>
 
 <section class="f1">
-  <h1><span class="ok">🎉 PARABÉNS PELA SUA COMPRA!</span><br>VOCÊ DESBLOQUEOU UMA <span class="hl"><span class="red">OFERTA EXCLUSIVA</span></span>&nbsp;👇</h1>
+  <h1><span class="g">🎉 PARABÉNS PELA SUA COMPRA!</span><br>VOCÊ DESBLOQUEOU UMA <span class="hl"><span class="red">OFERTA EXCLUSIVA</span></span>&nbsp;👇</h1>
   <p class="sub"><span class="only">Somente nesta página</span>, aproveite uma <b>condição especial</b> para adicionar o <span class="prod">Kit Primeira Clínica</span> à sua compra e tenha a <b>ficha de anamnese pronta</b>, o guia que mostra <b>o que cada resposta do paciente muda no atendimento</b> e o <b>Mapa dos Dentes</b> para atender sem travar!</p>
-
-  <div class="car">
+    <div class="car">
     <div class="ctrack" id="ctrack">
       <!-- Slide 1: mockup visual provisório. Para adicionar os mockups: <div class="slide"><img src="/img/up1.webp" alt=""></div> -->
       <div class="slide"><div class="mk">
@@ -129,19 +189,37 @@ h1 .red{color:#DC2626}
       <div class="slide"><img src="/img/kit5.webp" alt="Prévia: qual anestesia para cada dente" loading="lazy"></div>
     </div>
     <div class="cdots" id="cdots"></div>
+
   </div>
 </section>
 
-<!-- DOBRA 2 -->
-<section class="f2">
-  <div class="box" id="oferta">
-    <div class="ativa">
-      <span class="agora">APENAS AGORA · <span id="agora">--/-- às --:--</span></span>
-      <div class="leve">Leve o Kit Primeira Clínica</div>
-      <div class="de">de <s>R$ 97,00</s> por apenas</div>
-      <div class="preco">R$ 19,90</div>
-      <div class="timer">Esta oferta expira em <b id="tm">15:00</b></div>
-      <p class="info">Adicione ao seu pedido com 1 clique. A entrega é direto no seu e-mail e WhatsApp após a confirmação.</p>
+<section class="sec" style="background:#FAFDFC">
+  <h2>Você já domina os fármacos.<br>Agora, o atendimento.</h2>
+  <p class="lead">O Atlas é a teoria. O Kit é a prática na cadeira.</p>
+  <div class="vs"><div class="sem"><h3>SEM O KIT</h3><p>✕ <span>Paciente diz "tomo remédio de pressão" e você não sabe o que muda</span></p><p>✕ <span>Anamnese incompleta, feita de cabeça</span></p><p>✕ <span>Confunde a numeração na hora de anotar</span></p><p>✕ <span>Insegurança na primeira clínica</span></p></div><div class="com"><h3>COM O KIT</h3><p>✓ <span>Sabe o que cada resposta muda no atendimento</span></p><p>✓ <span>Ficha pronta, completa e padronizada</span></p><p>✓ <span>Mapa e odontograma sempre à mão</span></p><p>✓ <span>Atende com mais segurança desde o 1º paciente</span></p></div></div>
+</section>
+
+<section class="sec">
+  <h2>O que você recebe</h2>
+  <p class="lead">Tudo em PDF, no seu e-mail e WhatsApp, logo após a confirmação.</p>
+  <div class="items"><div class="it"><div class="ic" style="background:#E6F5F2">📋</div><div><b>Ficha de anamnese pronta</b><span>3 páginas para imprimir: história médica, medicamentos, alergias e sinais vitais.</span></div></div><div class="it"><div class="ic" style="background:#EEF3FF">🔎</div><div><b>Decodificador de respostas</b><span>O que cada "SIM" muda na anestesia, no sangramento e na receita (20 condições).</span></div></div><div class="it"><div class="ic" style="background:#FFF1E0">💊</div><div><b>Medicamentos de uso contínuo</b><span>26 grupos de remédios e o que cada um exige de você no atendimento.</span></div></div><div class="it"><div class="ic" style="background:#F3EEFF">🦷</div><div><b>Mapa dos Dentes</b><span>Numeração FDI, faces, raízes, canais e cronologia de erupção.</span></div></div><div class="it"><div class="ic" style="background:#FFECEF">🗂️</div><div><b>Odontograma para imprimir</b><span>Permanentes e decíduos, com legenda dos símbolos.</span></div></div><div class="it"><div class="ic" style="background:#E8F7EE">💉</div><div><b>Qual anestesia para cada dente</b><span>Nervo, técnica e os detalhes que fazem a anestesia falhar.</span></div></div></div>
+</section>
+
+<section class="f2" id="oferta">
+  <div class="card">
+    <div class="ribbon">🔥 OFERTA ÚNICA · SÓ NESTA PÁGINA</div>
+    <div class="cbody">
+      <span class="agora"><i></i>APENAS AGORA · <span id="agora">--/-- às --:--</span></span>
+      <div class="prodrow"><div class="mini">Kit Primeira Clínica</div><div><b>Kit Primeira Clínica</b><span>Anamnese + decodificador + Mapa dos Dentes + odontograma</span></div></div>
+      <div class="priceline"><span class="de">R$ 97,00</span><span class="save">ECONOMIZE 79%</span></div>
+      <div class="preco"><small>R$</small>19,90</div>
+      <div class="unico">pagamento único · acesso imediato</div>
+      <div class="timer" id="timer">
+        <div class="tl">⏳ ESTA OFERTA EXPIRA EM</div>
+        <div class="digits"><div><span class="d" id="mm">--</span><small>MIN</small></div><em>:</em><div><span class="d" id="ss">--</span><small>SEG</small></div></div>
+        <div class="tbar"><i id="tbar"></i></div>
+      </div>
+      <p class="info">Adicione ao seu pedido com <b>1 clique</b>. A entrega é direto no seu <b>e-mail e WhatsApp</b> após a confirmação.</p>
       <div id="wiapy_upsell"></div>
       <script>
       if (typeof initWiapyUpsell === "function") initWiapyUpsell({
@@ -157,47 +235,50 @@ h1 .red{color:#DC2626}
           refusalLinkText: "Recusar esta oferta",
           refusalLinkColor: "#000000"
       });
-      else document.getElementById("wiapy_upsell").innerHTML = '<a class="btn" href="https://pay.wiapy.com/checkout/6ad0eac89b597b6a2b64fce4">SIM, EU ACEITO ESSA OFERTA</a><a class="nao" href="/downsell">Recusar esta oferta</a>';
+      else document.getElementById("wiapy_upsell").innerHTML = '<a class="btn" href="https://pay.wiapy.com/checkout/6ad0eac89b597b6a2b64fce4">SIM, EU ACEITO ESSA OFERTA</a><a class="nao" href="https://solucaocerta.site/downsell">Recusar esta oferta</a>';
       </script>
-      <div class="seg">🔒 Pagamento seguro · Garantia de 7 dias</div>
-      
-    </div>
-    <div class="fim" id="fim">
-      <div style="font-size:18px;font-weight:800;margin-bottom:6px">Tudo certo! ✅</div>
-      <div style="font-size:14px;line-height:1.6;color:#3B5560">Seu acesso ao <b>Atlas Visual da Farmacologia Odontológica</b> já foi enviado para o seu e-mail. Confira também a caixa de spam e promoções.</div>
+      <div class="trust"><span>🔒 Pagamento seguro</span><span>⚡ Acesso imediato</span><span>📱 E-mail e WhatsApp</span></div>
+      <div class="seal"><div class="s7"><b>7</b><small>DIAS</small></div><div><b>Garantia de 7 dias.</b> Se não gostar, é só pedir o reembolso dentro do prazo. Sem burocracia.</div></div>
     </div>
   </div>
+</section>
+
+<section class="sec">
+  <h2>Dúvidas rápidas</h2>
+  <div class="faq" style="margin-top:14px"><details><summary>Como vou receber?</summary><p>Em PDF, no seu e-mail e no WhatsApp, logo após a confirmação do pagamento.</p></details><details><summary>É diferente do Atlas que comprei?</summary><p>Sim. O Atlas é farmacologia. O Kit Primeira Clínica é o atendimento na prática: anamnese, o que cada condição do paciente muda, mapa dos dentes e odontograma.</p></details><details><summary>Serve para quem ainda é estudante?</summary><p>Sim. Foi pensado justamente para quem está começando a clínica ou acabou de se formar.</p></details><details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia para pedir o reembolso.</p></details></div>
 </section>
 
 <div class="disc">Material educacional elaborado com base em literatura científica e referências de odontologia. Não substitui avaliação profissional, protocolos institucionais nem o julgamento clínico do cirurgião-dentista.</div>
 </div>
 
+<div class="sticky" id="sticky"><div class="in"><div class="p">Kit Primeira Clínica<b>R$ 19,90</b></div><a href="#oferta" id="stk">ACEITAR OFERTA</a></div></div>
+
 <script>
-/* ====== CONFIGURAÇÃO ======
-   Cole aqui o link de checkout (ou de compra com 1 clique) do upsell na Wiapy: */
-var LINK_UPSELL = "";
-/* ========================== */
 (function(){
   function pad(n){return (n<10?'0':'')+n;}
   var d=new Date();
   document.getElementById('agora').textContent=pad(d.getDate())+'/'+pad(d.getMonth()+1)+' às '+pad(d.getHours())+':'+pad(d.getMinutes());
+  setTimeout(function(){ document.getElementById('pbar').style.width='75%'; },300);
 
-  var btn=document.getElementById('btnUp');
-  if(!btn){} else if(LINK_UPSELL){ var q=location.search; btn.href=LINK_UPSELL+(q?(LINK_UPSELL.indexOf('?')>-1?'&':'?')+q.slice(1):''); }
-  else if(btn) btn.addEventListener('click',function(e){ e.preventDefault(); alert('Link do upsell ainda não configurado.'); });
-
-  /* timer de 15 min: o prazo fica salvo, recarregar não reinicia; ao zerar, a oferta encerra de verdade */
-  var KEY='atlas_up_deadline', dl=0;
+  /* timer: prazo salvo; ao zerar, mostra "últimos instantes" e mantém a oferta */
+  var TOTAL=15*60, KEY='atlas_up_deadline', dl=0;
   try{ dl=parseInt(localStorage.getItem(KEY)||'0',10); }catch(e){}
-  if(!dl){ dl=Date.now()+15*60*1000; try{localStorage.setItem(KEY,String(dl));}catch(e){} }
-  var tm=document.getElementById('tm');
-  function encerrar(){
-    document.querySelector('.timer').innerHTML='⚠️ <b style="font-size:16px;margin:0">Últimos instantes!</b><br>Compre agora para garantir esse valor antes que a oferta saia do ar.';
-  }
-  function tick(){ var s=Math.max(0,Math.floor((dl-Date.now())/1000)); if(s<=0){ clearInterval(iv); encerrar(); return; } tm.textContent=pad(Math.floor(s/60))+':'+pad(s%60); }
+  if(!dl){ dl=Date.now()+TOTAL*1000; try{localStorage.setItem(KEY,String(dl));}catch(e){} }
+  var mm=document.getElementById('mm'), ss=document.getElementById('ss'), tb=document.getElementById('tbar');
+  function last(){ var t=document.getElementById('timer'); t.className='timer last'; t.innerHTML='⚠️ <b>Últimos instantes!</b><br>Compre agora para garantir esse valor antes que a oferta saia do ar.'; }
+  function tick(){ var s=Math.max(0,Math.floor((dl-Date.now())/1000)); if(s<=0){ clearInterval(iv); last(); return; }
+    mm.textContent=pad(Math.floor(s/60)); ss.textContent=pad(s%60); tb.style.width=(s/TOTAL*100)+'%'; }
   var iv=setInterval(tick,1000); tick();
 
-  var nao=document.getElementById('nao'); if(nao) nao.addEventListener('click',function(){ location.href='/downsell'+location.search; });
+  /* rolagem suave até a oferta */
+  function glide(el){ var st=window.pageYOffset, t0=null, dur=700; function step(ts){ if(t0===null)t0=ts; var k=Math.min(1,(ts-t0)/dur), e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2; var tg=st+el.getBoundingClientRect().top-12; window.scrollTo(0,st+(tg-st)*e); if(k<1)requestAnimationFrame(step); } requestAnimationFrame(step); }
+  var of=document.getElementById('oferta');
+  document.getElementById('stk').addEventListener('click',function(e){ e.preventDefault(); glide(of); });
+
+  /* barra fixa: aparece ao rolar, some quando o card de oferta está na tela */
+  var sk=document.getElementById('sticky');
+  function upd(){ var r=of.getBoundingClientRect(); var vis=r.top<window.innerHeight && r.bottom>0; sk.className='sticky'+(window.pageYOffset>500 && !vis?' on':''); }
+  window.addEventListener('scroll',upd,{passive:true}); upd();
 
   /* carrossel */
   var tr=document.getElementById('ctrack'), slides=tr.children, dots=document.getElementById('cdots');
