@@ -1,9 +1,12 @@
-# Atlas Visual da Farmacologia Odontológica · Página de vendas
+# solucaocerta.site
 
-Página estática (HTML + imagens), pronta para Vercel ou Netlify.
+Site estático (HTML + imagens), publicado a partir deste repositório.
 
-- `index.html`: página completa, com Pixel Lowtrack e Microsoft Clarity no `<head>`
-- `img/`: mockups, capas dos bônus, fichas e depoimentos
+- `index.html`: página inicial simples ("Em breve").
+- `diagnostico-split/`: área de membros do Diagnóstico Split (137 fichas em 8 blocos, busca, visor de fichas e 6 bônus em PDF).
+  - `diagnostico-split/img/fichas`: fichas em tamanho real
+  - `diagnostico-split/img/thumbs`: miniaturas da grade
+  - `diagnostico-split/img/bonus`: capas dos bônus
+  - `diagnostico-split/bonus`: PDFs dos bônus
 
-Checkouts (Wiapy): R$ 27,90 · R$ 19,90 (pop-up do Básico) · R$ 14,90 (pop-up de saída) · R$ 10,00 (Básico).
-As UTMs da URL são repassadas automaticamente para os links de checkout.
+A página da área de membros tem `noindex` para não aparecer em buscadores. Ela não tem login: quem tiver o link acessa.
