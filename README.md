@@ -12,5 +12,5 @@ Site estático (HTML + imagens), publicado a partir deste repositório.
   - Feita para celular. Contador "preço de lançamento até hoje" zera à meia-noite do horário de quem visita (página demonstrativa, nunca expira).
   - Checkouts Wiapy: Básico R$ 19,90 (`FgHer-qHkd5n`), Completo R$ 37,90 (`RyaOBWaerFmr`), oferta Completo R$ 29,90 (`nkKnxCHw8pR`). UTMs da URL são repassadas para os checkouts.
   - Clique no Básico abre um popup com o Completo por R$ 29,90 (com opção de seguir no Básico). Back redirect: na primeira vez que o visitante tenta voltar, o mesmo popup aparece.
-  - Falta: parcelas (`[X]x de R$ [valor]`).
+  - Parcelas: Completo em 9x de R$ 5,49.
   - Rastreamento: script de UTM Lowtrack (`lt_px_9e5b36d19ef5`) e Microsoft Clarity `z3xxebceza` no `<head>`.
