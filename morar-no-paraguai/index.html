@@ -42,7 +42,7 @@ details[open] .faq-plus{transform:rotate(45deg)}
 .hscroll{scrollbar-width:none}
 .hscroll::-webkit-scrollbar{display:none}
 </style>
-<style>#lightbox[hidden]{display:none!important}</style>
+<style>#lightbox[hidden],#oferta[hidden]{display:none!important}</style>
 </head>
 <body>
 <div style="font-family: 'Barlow', system-ui, sans-serif; color: #0E1E45; background: #FFFFFF; width: 100%; max-width: 480px; margin: 0 auto; overflow-x: hidden">
@@ -202,7 +202,7 @@ details[open] .faq-plus{transform:rotate(45deg)}
 <div style="display: flex; gap: 9px; align-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16306B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Checklist da Mudança</div>
 <div style="display: flex; gap: 9px; align-items: center; color: #6B7895"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9AA4BC" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>Bônus não incluídos</div>
 </div>
-<a href="#planos" style="display: flex; justify-content: center; align-items: center; min-height: 50px; border: 2px solid #0E1E45; color: #0E1E45; text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 19px; text-transform: uppercase; border-radius: 10px">Quero só o Básico</a>
+<a href="https://pay.wiapy.com/FgHer-qHkd5n" data-checkout="basico" data-oferta="1" style="display: flex; justify-content: center; align-items: center; min-height: 50px; border: 2px solid #0E1E45; color: #0E1E45; text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 19px; text-transform: uppercase; border-radius: 10px">Quero só o Básico</a>
 <div style="display: flex; gap: 10px; align-items: center; justify-content: center; background: #FFF4D1; border-radius: 10px; padding: 12px; font-size: 15px; line-height: 1.4; color: #3D2F00; text-align: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9A6E00" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex: none"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"></path></svg><span><strong style="font-weight: 800">92% das pessoas</strong> escolhem o Plano Completo</span></div>
 </div>
 </div>
@@ -224,7 +224,7 @@ details[open] .faq-plus{transform:rotate(45deg)}
 <div style="display: flex; gap: 9px; align-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E1242A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4"></rect><path d="M12 8v13M5 12v9h14v-9M12 8c-2-4-6-4-6-1.5S9 8 12 8zm0 0c2-4 6-4 6-1.5S15 8 12 8z"></path></svg>Espanhol de Sobrevivência</div>
 <div style="display: flex; gap: 9px; align-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16306B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"></path></svg>Atualizações grátis pra sempre</div>
 </div>
-<a href="#planos" class="cta pulse" style="display: flex; justify-content: center; align-items: center; min-height: 62px; background: #16A34A; color: #FFFFFF; text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 24px; letter-spacing: 0.02em; border-radius: 12px; padding: 0 14px">QUERO O PLANO COMPLETO</a>
+<a href="https://pay.wiapy.com/RyaOBWaerFmr" data-checkout="completo" class="cta pulse" style="display: flex; justify-content: center; align-items: center; min-height: 62px; background: #16A34A; color: #FFFFFF; text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 24px; letter-spacing: 0.02em; border-radius: 12px; padding: 0 14px">QUERO O PLANO COMPLETO</a>
 <div style="display: flex; justify-content: center; gap: 14px; font-size: 12px; font-weight: 600; color: #46557A"><span>Pix ou cartão</span><span aria-hidden="true">·</span><span>Garantia de 7 dias</span></div>
 </div>
 </div>
@@ -262,6 +262,28 @@ details[open] .faq-plus{transform:rotate(45deg)}
 </footer>
 
 </div>
+<!-- POPUP OFERTA (Básico -> Completo R$ 29,90) -->
+<div id="oferta" hidden role="dialog" aria-modal="true" aria-labelledby="oferta-t" style="position: fixed; inset: 0; z-index: 1100; background: rgba(5,12,30,.88); display: flex; align-items: center; justify-content: center; padding: 16px; box-sizing: border-box">
+<div style="position: relative; width: 100%; max-width: 420px; max-height: calc(100vh - 32px); overflow-y: auto; background: #FFFFFF; border-radius: 18px; border: 4px solid #FFC72C; box-sizing: border-box">
+<button type="button" id="oferta-x" aria-label="Fechar" style="position: absolute; top: 8px; right: 8px; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255,255,255,.18); color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+<div style="background: #E1242A; color: #FFFFFF; text-align: center; padding: 14px 48px 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 26px; letter-spacing: 0.02em">ESPERA! OFERTA ÚNICA</div>
+<div style="padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 12px; text-align: center; font-family: 'Barlow', sans-serif; color: #0E1E45">
+<h2 id="oferta-t" style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 30px; line-height: 1; text-transform: uppercase">Leve o <span style="color: #E1242A">Plano Completo</span> por quase o preço do Básico</h2>
+<img src="img/kit.webp" alt="Plano Completo: Guia, Checklist e os 4 bônus" style="width: 100%; height: auto; display: block">
+<div style="display: flex; flex-direction: column; gap: 6px; text-align: left; font-size: 15px; font-weight: 600">
+<div>✓ Guia Morar no Paraguai + Checklist</div>
+<div>✓ Planilha de Custo da Mudança</div>
+<div>✓ Guia das 5 Cidades</div>
+<div>✓ Seus Primeiros 30 Dias</div>
+<div>✓ Espanhol de Sobrevivência</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 2px"><div style="font-size: 15px; color: #6B7895">de <span style="text-decoration: line-through">R$ 37,90</span> por apenas</div><div style="font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 60px; line-height: 0.95; color: #E1242A">R$ 29,90</div><div style="font-size: 13px; color: #46557A; font-weight: 600">só R$ 10 a mais que o Básico · pagamento único</div></div>
+<a href="https://pay.wiapy.com/nkKnxCHw8pR" data-checkout="completo-oferta" class="pulse" style="display: flex; justify-content: center; align-items: center; min-height: 60px; background: #16A34A; color: #FFFFFF; text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 22px; border-radius: 12px; padding: 0 12px">SIM! QUERO O COMPLETO POR R$ 29,90</a>
+<a href="https://pay.wiapy.com/FgHer-qHkd5n" data-checkout="basico" style="color: #46557A; font-size: 14px; text-decoration: underline; padding: 6px">Não, obrigado. Quero só o Básico por R$ 19,90</a>
+</div>
+</div>
+</div>
+
 <script>
 (function(){
   function p(n){return String(n).padStart(2,'0');}
@@ -279,6 +301,29 @@ details[open] .faq-plus{transform:rotate(45deg)}
   var lb=document.getElementById('lightbox'), li=document.getElementById('lb-img');
   document.querySelectorAll('[data-zoom]').forEach(function(b){
     b.addEventListener('click',function(){li.src=b.getAttribute('data-zoom');lb.hidden=false;document.body.style.overflow='hidden';});
+  });
+
+  // UTMs da URL repassadas para os checkouts
+  var qs = location.search.slice(1);
+  document.querySelectorAll('a[data-checkout]').forEach(function(a){
+    if (qs) a.href = a.href + (a.href.indexOf('?') < 0 ? '?' : '&') + qs;
+  });
+  // Popup de oferta
+  var of = document.getElementById('oferta');
+  function abrirOferta(){ of.hidden = false; document.body.style.overflow = 'hidden'; }
+  function fecharOferta(){ of.hidden = true; document.body.style.overflow = ''; }
+  document.getElementById('oferta-x').addEventListener('click', fecharOferta);
+  of.addEventListener('click', function(e){ if (e.target === of) fecharOferta(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !of.hidden) fecharOferta(); });
+  // Clique no plano Básico: mostra a oferta antes de ir ao checkout
+  document.querySelectorAll('a[data-oferta]').forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); abrirOferta(); });
+  });
+  // Back redirect: ao tentar voltar/sair pela primeira vez, mostra a oferta
+  var mostrouVoltar = false;
+  try { history.pushState({oferta: 1}, '', location.href); } catch(e){}
+  window.addEventListener('popstate', function(){
+    if (!mostrouVoltar) { mostrouVoltar = true; abrirOferta(); }
   });
   function close(){lb.hidden=true;li.src='';document.body.style.overflow='';}
   lb.addEventListener('click',close);
