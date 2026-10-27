@@ -342,12 +342,6 @@ details[open] .faq-plus{transform:rotate(45deg)}
   document.querySelectorAll('a[data-oferta]').forEach(function(a){
     a.addEventListener('click', function(e){ e.preventDefault(); abrirOferta(); });
   });
-  // Back redirect: ao tentar voltar/sair pela primeira vez, mostra a oferta
-  var mostrouVoltar = false;
-  try { history.pushState({oferta: 1}, '', location.href); } catch(e){}
-  window.addEventListener('popstate', function(){
-    if (!mostrouVoltar) { mostrouVoltar = true; abrirOferta(); }
-  });
   function close(){lb.hidden=true;li.src='';document.body.style.overflow='';}
   lb.addEventListener('click',close);
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!lb.hidden)close();});
