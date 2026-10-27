@@ -42,7 +42,27 @@ details[open] .faq-plus{transform:rotate(45deg)}
 .hscroll{scrollbar-width:none}
 .hscroll::-webkit-scrollbar{display:none}
 </style>
-<style>#lightbox[hidden],#oferta[hidden]{display:none!important}</style>
+<style>#lightbox[hidden]{display:none!important}
+/* Popup de oferta: cabe em qualquer celular (rola se precisar) */
+#oferta{position:fixed;inset:0;z-index:1100;background:rgba(5,12,30,.88);display:flex;padding:10px;box-sizing:border-box;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+#oferta[hidden]{display:none!important}
+#oferta .of-box{position:relative;margin:auto;width:100%;max-width:400px;background:#FFFFFF;border-radius:16px;border:4px solid #FFC72C;box-sizing:border-box;flex:none}
+#oferta-x{position:absolute;top:4px;right:4px;width:44px;height:44px;border-radius:50%;border:none;background:rgba(255,255,255,.18);color:#FFFFFF;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+#oferta .of-top{background:#E1242A;color:#FFFFFF;text-align:center;padding:12px 48px 10px;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(19px,3.4vh,24px);letter-spacing:.02em;line-height:1.1}
+#oferta .of-body{padding:clamp(10px,2vh,16px) 14px clamp(10px,2vh,16px);display:flex;flex-direction:column;gap:clamp(6px,1.4vh,10px);text-align:center;font-family:'Barlow',sans-serif;color:#0E1E45}
+#oferta .of-h{margin:0;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(20px,3.8vh,27px);line-height:1;text-transform:uppercase}
+#oferta .of-img{width:100%;height:auto;max-height:22vh;object-fit:contain;display:block}
+#oferta .of-list{display:grid;grid-template-columns:1fr 1fr;gap:4px 8px;text-align:left;font-size:13px;font-weight:600;line-height:1.25}
+#oferta .of-de{font-size:14px;color:#6B7895}
+#oferta .of-valor{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(40px,7.5vh,56px);line-height:.95;color:#E1242A}
+#oferta .of-obs{font-size:12px;color:#46557A;font-weight:600}
+#oferta .of-price{display:flex;flex-direction:column;gap:2px}
+#oferta .of-sim{display:flex;justify-content:center;align-items:center;min-height:52px;background:#16A34A;color:#FFFFFF;text-decoration:none;font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(18px,5.4vw,21px);line-height:1.05;border-radius:12px;padding:6px 10px;text-align:center}
+#oferta .of-nao{display:block;color:#46557A;font-size:14px;text-decoration:underline;padding:10px 6px;min-height:24px}
+/* Celulares baixos: tira a imagem pra os botões aparecerem sem rolar */
+@media (max-height:640px){#oferta .of-img{display:none}#oferta .of-obs{display:none}}
+@media (max-width:340px){#oferta{padding:6px}#oferta .of-body{padding-left:10px;padding-right:10px}#oferta .of-list{font-size:12px}}
+</style>
 </head>
 <body>
 <div style="font-family: 'Barlow', system-ui, sans-serif; color: #0E1E45; background: #FFFFFF; width: 100%; max-width: 480px; margin: 0 auto; overflow-x: hidden">
@@ -263,23 +283,23 @@ details[open] .faq-plus{transform:rotate(45deg)}
 
 </div>
 <!-- POPUP OFERTA (Básico -> Completo R$ 29,90) -->
-<div id="oferta" hidden role="dialog" aria-modal="true" aria-labelledby="oferta-t" style="position: fixed; inset: 0; z-index: 1100; background: rgba(5,12,30,.88); display: flex; align-items: center; justify-content: center; padding: 16px; box-sizing: border-box">
-<div style="position: relative; width: 100%; max-width: 420px; max-height: calc(100vh - 32px); overflow-y: auto; background: #FFFFFF; border-radius: 18px; border: 4px solid #FFC72C; box-sizing: border-box">
-<button type="button" id="oferta-x" aria-label="Fechar" style="position: absolute; top: 8px; right: 8px; width: 40px; height: 40px; border-radius: 50%; border: none; background: rgba(255,255,255,.18); color: #FFFFFF; display: flex; align-items: center; justify-content: center; cursor: pointer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
-<div style="background: #E1242A; color: #FFFFFF; text-align: center; padding: 14px 48px 12px; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 26px; letter-spacing: 0.02em">ESPERA! OFERTA ÚNICA</div>
-<div style="padding: 18px 18px 20px; display: flex; flex-direction: column; gap: 12px; text-align: center; font-family: 'Barlow', sans-serif; color: #0E1E45">
-<h2 id="oferta-t" style="margin: 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 30px; line-height: 1; text-transform: uppercase">Leve o <span style="color: #E1242A">Plano Completo</span> por quase o preço do Básico</h2>
-<img src="img/kit.webp" alt="Plano Completo: Guia, Checklist e os 4 bônus" style="width: 100%; height: auto; display: block">
-<div style="display: flex; flex-direction: column; gap: 6px; text-align: left; font-size: 15px; font-weight: 600">
-<div>✓ Guia Morar no Paraguai + Checklist</div>
-<div>✓ Planilha de Custo da Mudança</div>
+<div id="oferta" hidden role="dialog" aria-modal="true" aria-labelledby="oferta-t">
+<div class="of-box">
+<button type="button" id="oferta-x" aria-label="Fechar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg></button>
+<div class="of-top">ESPERA! OFERTA ÚNICA</div>
+<div class="of-body">
+<h2 id="oferta-t" class="of-h">Leve o <span style="color: #E1242A">Plano Completo</span> por quase o preço do Básico</h2>
+<img class="of-img" src="img/kit.webp" alt="Plano Completo: Guia, Checklist e os 4 bônus">
+<div class="of-list">
+<div>✓ Guia + Checklist</div>
+<div>✓ Planilha de Custo</div>
 <div>✓ Guia das 5 Cidades</div>
-<div>✓ Seus Primeiros 30 Dias</div>
+<div>✓ Primeiros 30 Dias</div>
 <div>✓ Espanhol de Sobrevivência</div>
 </div>
-<div style="display: flex; flex-direction: column; gap: 2px"><div style="font-size: 15px; color: #6B7895">de <span style="text-decoration: line-through">R$ 37,90</span> por apenas</div><div style="font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 60px; line-height: 0.95; color: #E1242A">R$ 29,90</div><div style="font-size: 13px; color: #46557A; font-weight: 600">só R$ 10 a mais que o Básico · pagamento único</div></div>
-<a href="https://pay.wiapy.com/nkKnxCHw8pR" data-checkout="completo-oferta" class="pulse" style="display: flex; justify-content: center; align-items: center; min-height: 60px; background: #16A34A; color: #FFFFFF; text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 22px; border-radius: 12px; padding: 0 12px">SIM! QUERO O COMPLETO POR R$ 29,90</a>
-<a href="https://pay.wiapy.com/FgHer-qHkd5n" data-checkout="basico" style="color: #46557A; font-size: 14px; text-decoration: underline; padding: 6px">Não, obrigado. Quero só o Básico por R$ 19,90</a>
+<div class="of-price"><div class="of-de">de <span style="text-decoration: line-through">R$ 37,90</span> por apenas</div><div class="of-valor">R$ 29,90</div><div class="of-obs">só R$ 10 a mais que o Básico · pagamento único</div></div>
+<a href="https://pay.wiapy.com/nkKnxCHw8pR" data-checkout="completo-oferta" class="of-sim pulse">SIM! QUERO O COMPLETO POR R$ 29,90</a>
+<a href="https://pay.wiapy.com/FgHer-qHkd5n" data-checkout="basico" class="of-nao">Não, obrigado. Quero só o Básico por R$ 19,90</a>
 </div>
 </div>
 </div>
