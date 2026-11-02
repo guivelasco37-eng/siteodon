@@ -58,7 +58,10 @@ body{margin:0;background:var(--bg);color:var(--navy);font-family:"Barlow",system
 .price small{display:block;font-weight:700;color:var(--muted)}
 .price b{font-family:"Barlow Condensed",sans-serif;font-weight:900;font-size:56px;color:var(--red);line-height:1}
 .foot{text-align:center;font-size:12px;color:var(--muted);margin-top:26px;line-height:1.5}
-@media (prefers-reduced-motion: reduce){.bar i,.watch i{animation:none}}
+.espera{display:none}
+.espera.on{display:block;animation:fd .5s ease}
+@keyframes fd{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.bar i,.watch i,.espera.on{animation:none}}
 </style>
 </head>
 <body>
@@ -78,6 +81,7 @@ body{margin:0;background:var(--bg);color:var(--navy);font-family:"Barlow",system
   </div>
   <div class="watch"><i></i>Ative o som e assista até o final</div>
 
+  <div class="espera">
   <div class="btnbox">
     <div id="wiapy_upsell"></div>
     <script>
@@ -108,6 +112,12 @@ body{margin:0;background:var(--bg);color:var(--navy);font-family:"Barlow",system
     <div class="li"><i>✓</i><span><b>Roteiro da Migraciones e frases em espanhol</b> para abrir na hora.</span></div>
     <div class="price"><small>Oferta única, só nesta página</small><b>R$ 27,00</b></div>
   </section>
+  </div>
+  <script>
+  // Tempo (em segundos) até o botão aparecer. Para mudar, troque o número abaixo.
+  var ATRASO_BOTAO = 45;
+  setTimeout(function(){ var e = document.querySelector('.espera'); if (e) e.classList.add('on'); }, ATRASO_BOTAO * 1000);
+  </script>
 
   <p class="foot">Material informativo. Não substitui orientação jurídica ou contábil.<br>© 2026 Morar no Paraguai: Guia + Checklist.</p>
 </main>
