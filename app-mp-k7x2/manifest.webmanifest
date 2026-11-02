@@ -1,0 +1,17 @@
+{
+  "name": "Meu Plano de Mudança – Paraguai",
+  "short_name": "Meu Plano",
+  "description": "Seu plano de mudança para o Paraguai: checklist, documentos da família e datas importantes.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0E1E45",
+  "theme_color": "#0E1E45",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

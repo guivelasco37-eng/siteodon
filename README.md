@@ -10,3 +10,4 @@ Site estático (HTML + imagens), publicado a partir deste repositório.
   - Rastreamento: script de UTM Lowtrack (`lt_px_9e5b36d19ef5`) e Microsoft Clarity `z3xxebceza` no `<head>`.
 - `diagnostico-split/`: área de membros do Diagnóstico Split (137 fichas em 8 blocos, busca, visor de fichas e 6 bônus em PDF). Tem `noindex` e não tem login.
 - A página de vendas do Diagnóstico Split foi tirada do ar em 26/10/2026 (continua no histórico do git, commit 41fb436).
+- `app-mp-k7x2/`: app "Meu Plano de Mudança" (upsell). Webapp instalável (manifest + service worker), sem login, `noindex`. Checklist das 8 fases, documentos por pessoa da família (aviso de antecedente vencendo ou vencendo antes da Migraciones), datas (janela de 90 dias da permanente, saída fiscal), calculadora de taxas, frases em espanhol e cópia de segurança. O progresso fica no `localStorage` do aparelho (chave `mp_plano_v1`). Taxas no topo do script (`TAXA`): atualizar todo ano em julho.

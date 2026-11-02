@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0E1E45">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Meu Plano">
+<title>Meu Plano de Mudança</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800;900&family=Barlow+Semi+Condensed:wght@500;600;700&display=swap">
+<style>
+:root{
+  --navy:#0E1E45; --navy2:#16306B; --red:#E1242A; --yellow:#FFC72C; --green:#16A34A;
+  --bg:#F2F4F9; --card:#FFFFFF; --ink:#0E1E45; --muted:#56637F; --line:#DCE2EE;
+  --blue:#DDE9F8; --gl:#DDF1E1; --pk:#FBE0E2; --yl:#FFF1C2;
+  --safe-b: env(safe-area-inset-bottom, 0px); --safe-t: env(safe-area-inset-top, 0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"Barlow Semi Condensed",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px}
+body{min-height:100vh}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:520px;margin:0 auto;padding:0 16px calc(96px + var(--safe-b))}
+h1,h2,h3{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-weight:900;text-transform:uppercase;margin:0;line-height:1}
+.top{background:var(--navy);color:#fff;padding:calc(14px + var(--safe-t)) 16px 18px}
+.top .in{max-width:520px;margin:0 auto}
+.top small{display:block;font-weight:600;letter-spacing:.18em;font-size:11px;color:#C9D3EA;margin-bottom:6px}
+.top h1{font-size:30px}
+.top h1 span{color:var(--yellow)}
+.sec{margin:18px 0 10px;display:flex;align-items:center;gap:8px}
+.sec h2{font-size:22px}
+.sec .pill{background:var(--yellow);color:var(--navy);font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:13px;letter-spacing:.08em;padding:3px 9px;border-radius:999px}
+.card{background:var(--card);border-radius:16px;padding:16px;box-shadow:0 2px 10px rgba(14,30,69,.06);margin-bottom:12px}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+
+/* progress */
+.prog{background:var(--navy);color:#fff;border-radius:18px;padding:18px;margin-top:-6px}
+.prog .big{font-family:"Barlow Condensed",sans-serif;font-weight:900;font-size:40px;line-height:1}
+.bar{height:16px;border-radius:999px;background:rgba(255,255,255,.15);overflow:hidden;margin-top:12px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#22C55E,#16A34A);border-radius:999px;transition:width .4s}
+.bar.light{background:#E7ECF5}
+.prog .sub{margin-top:8px;font-size:14px;color:#C9D3EA}
+
+.next{background:var(--red);color:#fff;border-radius:16px;padding:16px;margin-top:12px}
+.next small{font-family:"Barlow Condensed",sans-serif;font-weight:800;letter-spacing:.08em;font-size:14px;opacity:.9}
+.next .t{font-size:20px;font-weight:700;margin:4px 0 2px;line-height:1.2}
+.next .h{font-size:14px;opacity:.9}
+.next button{margin-top:12px;background:#fff;color:var(--red);border:0;border-radius:10px;padding:10px 14px;font-weight:700;min-height:44px;cursor:pointer}
+
+.date{display:flex;gap:12px;align-items:center;background:var(--yl);border-radius:14px;padding:12px 14px;margin-bottom:10px}
+.date .d{flex:none;width:58px;text-align:center;background:var(--navy);color:#fff;border-radius:10px;padding:6px 0;font-family:"Barlow Condensed",sans-serif;font-weight:900;line-height:1}
+.date .d b{display:block;font-size:24px}
+.date .d span{font-size:12px;letter-spacing:.05em}
+.date .tx{min-width:0}
+.date .tx b{display:block;font-weight:700}
+.date .tx span{font-size:14px;color:var(--muted)}
+.date.alert{background:var(--pk)}
+.date.alert .d{background:var(--red)}
+.date.ok{background:var(--gl)}
+
+/* checklist */
+.phase{background:var(--card);border-radius:16px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 10px rgba(14,30,69,.06)}
+.phase summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;align-items:center;gap:12px}
+.phase summary::-webkit-details-marker{display:none}
+.phase .n{flex:none;width:38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Barlow Condensed",sans-serif;font-weight:900;font-size:20px}
+.phase.done .n{background:var(--green)}
+.phase .pt{min-width:0;flex:1}
+.phase .pt b{display:block;font-family:"Barlow Condensed",sans-serif;font-weight:900;font-size:19px;text-transform:uppercase;line-height:1.05}
+.phase .pt span{font-size:13px;color:var(--muted)}
+.phase .cnt{flex:none;font-weight:700;font-size:14px;color:var(--muted)}
+.phase .chev{flex:none;transition:transform .2s;color:var(--muted)}
+.phase[open] .chev{transform:rotate(180deg)}
+.items{padding:0 10px 10px}
+.it{display:flex;gap:12px;align-items:flex-start;padding:12px 8px;border-top:1px solid var(--line);cursor:pointer}
+.it input{position:absolute;opacity:0;pointer-events:none}
+.box{flex:none;width:26px;height:26px;border-radius:7px;border:2.5px solid var(--navy);display:flex;align-items:center;justify-content:center;margin-top:1px;background:#fff;transition:background .15s}
+.box svg{width:16px;height:16px;opacity:0}
+.it input:checked + .box{background:var(--green);border-color:var(--green)}
+.it input:checked + .box svg{opacity:1}
+.it input:focus-visible + .box{outline:3px solid var(--yellow);outline-offset:2px}
+.it .lb{min-width:0}
+.it .lb b{display:block;font-weight:600;line-height:1.25}
+.it .lb span{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.it input:checked ~ .lb b{text-decoration:line-through;color:var(--muted)}
+
+/* family */
+.person{background:var(--card);border-radius:16px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 10px rgba(14,30,69,.06)}
+.person .ph{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--navy);color:#fff}
+.av{flex:none;width:42px;height:42px;border-radius:50%;background:var(--yellow);color:var(--navy);display:flex;align-items:center;justify-content:center;font-family:"Barlow Condensed",sans-serif;font-weight:900;font-size:22px}
+.person .ph b{font-family:"Barlow Condensed",sans-serif;font-weight:900;font-size:22px;text-transform:uppercase;line-height:1}
+.person .ph span{display:block;font-size:13px;color:#C9D3EA}
+.person .ph .av{display:flex;font-size:22px;color:var(--navy)}
+.person .ph .pc{margin-left:auto;font-weight:700;font-size:14px}
+.doc{padding:12px 16px;border-top:1px solid var(--line)}
+.doc .dt{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.doc .dt b{font-weight:700}
+.doc .dt em{font-style:normal;font-size:12px;color:var(--muted);white-space:nowrap}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.tg{display:inline-flex;align-items:center;gap:6px;border:2px solid var(--line);border-radius:999px;padding:6px 12px;min-height:38px;font-weight:600;font-size:14px;cursor:pointer;background:#fff;user-select:none}
+.tg input{position:absolute;opacity:0;pointer-events:none}
+.tg.on{background:var(--gl);border-color:var(--green);color:#0E6B32}
+.tg.na.on{background:#EEF1F6;border-color:#B8C2D6;color:var(--muted)}
+.tg:focus-within{outline:3px solid var(--yellow);outline-offset:1px}
+.warn{display:inline-block;margin-top:8px;font-weight:700;font-size:14px;border-radius:8px;padding:4px 10px}
+.warn.r{background:var(--pk);color:#A3161B}.warn.y{background:var(--yl);color:#6B4D00}.warn.g{background:var(--gl);color:#0E6B32}
+
+/* forms */
+label.f{display:block;font-weight:700;margin:12px 0 6px}
+label.f span{display:block;font-weight:500;font-size:13px;color:var(--muted);margin-top:2px}
+input[type=date],input[type=text],input[type=number],select,textarea{width:100%;border:2px solid var(--line);border-radius:12px;padding:12px;background:#fff;min-height:48px;font-size:16px}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--navy2)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:0;border-radius:14px;min-height:52px;font-family:"Barlow Condensed",sans-serif;font-weight:900;font-size:20px;letter-spacing:.02em;cursor:pointer;background:var(--green);color:#fff;margin-top:14px}
+.btn.sec2{background:#fff;color:var(--navy);border:2px solid var(--navy)}
+.btn.red{background:var(--red)}
+.btn.sm{min-height:44px;font-size:17px;width:auto;padding:0 16px;margin-top:0}
+.row{display:flex;gap:8px;align-items:center}
+.row > *{min-width:0}
+.prow{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.prow input{flex:1}
+.prow select{flex:none;width:auto}
+.x{flex:none;width:44px;height:44px;border-radius:12px;border:2px solid var(--line);background:#fff;cursor:pointer;font-size:20px;color:var(--muted)}
+
+/* mais */
+.menu a{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--card);border-radius:14px;margin-bottom:10px;text-decoration:none;color:var(--ink);font-weight:700;box-shadow:0 2px 10px rgba(14,30,69,.06)}
+.menu a .mi{flex:none;width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;background:var(--blue)}
+.menu a span{display:block;font-weight:500;font-size:13px;color:var(--muted)}
+.menu a .ar{margin-left:auto;color:var(--muted)}
+.back{display:inline-flex;align-items:center;gap:6px;background:none;border:0;color:var(--navy2);font-weight:700;padding:10px 0;cursor:pointer;min-height:44px}
+.phr{display:flex;gap:10px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+.phr:first-child{border-top:0}
+.phr .tx{flex:1;min-width:0}
+.phr .tx b{display:block;font-weight:700}
+.phr .tx span{font-size:14px;color:var(--muted)}
+.cp{flex:none;border:2px solid var(--line);background:#fff;border-radius:10px;min-height:40px;padding:0 12px;font-weight:700;cursor:pointer;color:var(--navy2)}
+.steps li{margin-bottom:10px;line-height:1.35}
+.tbl{width:100%;border-collapse:collapse;font-size:15px}
+.tbl td{padding:10px 4px;border-top:1px solid var(--line);vertical-align:top}
+.tbl td.n{text-align:right;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+.tbl tr.tot td{font-weight:700;font-size:17px;border-top:2px solid var(--navy)}
+.note{font-size:13px;color:var(--muted);line-height:1.4}
+
+/* nav */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);padding:6px 4px calc(6px + var(--safe-b));z-index:50;box-shadow:0 -4px 16px rgba(14,30,69,.06)}
+nav.tabs .in{max-width:520px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
+nav.tabs a{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;text-decoration:none;color:#8792A8;font-size:12px;font-weight:700;min-height:52px;justify-content:center}
+nav.tabs a svg{width:24px;height:24px}
+nav.tabs a.on{color:var(--navy)}
+nav.tabs a.on svg{color:var(--red)}
+
+.banner{background:var(--yellow);color:var(--navy);padding:10px 16px;font-weight:700;font-size:14px;text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(84px + var(--safe-b));transform:translateX(-50%);background:var(--navy);color:#fff;padding:10px 16px;border-radius:999px;font-weight:700;font-size:14px;z-index:60;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+.hidden{display:none!important}
+.welcome{background:var(--navy);min-height:100vh;color:#fff;padding:calc(28px + var(--safe-t)) 16px 40px}
+.welcome .in{max-width:520px;margin:0 auto}
+.welcome h1{font-size:42px;margin-top:10px}
+.welcome h1 span{color:var(--red);display:block}
+.welcome p{color:#C9D3EA;line-height:1.45}
+.welcome .card{color:var(--ink)}
+.flag{display:flex;height:8px;border-radius:4px;overflow:hidden;width:120px}
+.flag i{flex:1}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div id="inapp" class="banner hidden">Para salvar seu progresso, abra este link no Chrome ou no Safari (toque em ⋮ ou ··· e escolha "Abrir no navegador").</div>
+
+<!-- CONFIGURAÇÃO -->
+<section id="v-setup" class="welcome hidden">
+  <div class="in">
+    <div class="flag"><i style="background:#E1242A"></i><i style="background:#fff"></i><i style="background:#16306B"></i></div>
+    <h1>Meu plano de<span>mudança</span></h1>
+    <p>Responda 2 perguntas e o app monta o seu plano: o que fazer, os documentos de cada pessoa e as datas que não podem passar.</p>
+    <div class="card">
+      <label class="f" for="s-data">Quando você pretende se mudar?<span>Pode ser uma data aproximada. Dá para mudar depois.</span></label>
+      <input type="date" id="s-data">
+      <label class="f">Quem vai se mudar?<span>Coloque você e cada pessoa da família.</span></label>
+      <div id="s-pessoas"></div>
+      <button type="button" class="btn sec2" id="s-add">+ Adicionar pessoa</button>
+      <button type="button" class="btn" id="s-ok">Montar meu plano</button>
+      <p class="note" id="s-err" style="color:#A3161B"></p>
+    </div>
+    <p class="note" style="color:#C9D3EA">Seu plano fica salvo só neste celular. Material informativo: não substitui advogado ou contador. Confirme taxas e regras nos órgãos oficiais.</p>
+  </div>
+</section>
+
+<!-- APP -->
+<div id="v-app" class="hidden">
+  <header class="top"><div class="in"><small>MORAR NO PARAGUAI</small><h1 id="top-t">Meu plano de <span>mudança</span></h1></div></header>
+  <main class="wrap">
+
+    <!-- INÍCIO -->
+    <section data-tab="inicio">
+      <div class="prog" style="margin-top:14px">
+        <div class="big" id="h-pct">0% pronto</div>
+        <div class="bar"><i id="h-bar" style="width:0%"></i></div>
+        <div class="sub" id="h-sub"></div>
+      </div>
+      <div class="next" id="h-next"></div>
+      <div class="sec"><h2>Datas importantes</h2></div>
+      <div id="h-dates"></div>
+      <div class="sec"><h2>Família</h2></div>
+      <div id="h-fam"></div>
+    </section>
+
+    <!-- CHECKLIST -->
+    <section data-tab="checklist" class="hidden">
+      <div class="sec"><h2>Checklist</h2><span class="pill" id="c-pct">0%</span></div>
+      <div class="card" style="padding:12px 16px"><div class="bar light"><i id="c-bar" style="width:0%"></i></div><div class="small muted" style="margin-top:6px" id="c-sub"></div></div>
+      <div id="c-list"></div>
+    </section>
+
+    <!-- FAMÍLIA -->
+    <section data-tab="familia" class="hidden">
+      <div class="sec"><h2>Documentos da família</h2></div>
+      <p class="small muted" style="margin-top:0">Marque o que cada pessoa já tem. A apostila é feita em cartório no Brasil. Documentos brasileiros em português não precisam de tradução.</p>
+      <div id="f-list"></div>
+      <button type="button" class="btn sec2" data-go="pessoas">Editar pessoas</button>
+    </section>
+
+    <!-- DATAS -->
+    <section data-tab="datas" class="hidden">
+      <div class="sec"><h2>Suas datas</h2></div>
+      <div class="card">
+        <label class="f" for="d-mud">Data prevista da mudança</label>
+        <input type="date" id="d-mud">
+        <label class="f" for="d-ent">Data em que você entrou no Paraguai<span>Preencha depois de cruzar a fronteira e registrar a entrada.</span></label>
+        <input type="date" id="d-ent">
+        <label class="f" for="d-car">Vencimento do seu carnê de residente temporário<span>Está impresso no carnê. A temporária Mercosul vale 2 anos.</span></label>
+        <input type="date" id="d-car">
+      </div>
+      <div class="sec"><h2>O que isso significa</h2></div>
+      <div id="d-out"></div>
+    </section>
+
+    <!-- MAIS -->
+    <section data-tab="mais" class="hidden">
+      <div id="m-menu">
+        <div class="sec"><h2>Mais</h2></div>
+        <div class="menu">
+          <a href="#mais/migraciones"><span class="mi">🏛️</span><div>Dia na Migraciones<span>O passo a passo para abrir na fila</span></div><span class="ar">›</span></a>
+          <a href="#mais/frases"><span class="mi">💬</span><div>Frases em espanhol<span>Migraciones, imobiliária, banco e médico</span></div><span class="ar">›</span></a>
+          <a href="#mais/custos"><span class="mi">💰</span><div>Calculadora de taxas<span>Quanto a família paga e quanto juntar</span></div><span class="ar">›</span></a>
+          <a href="#mais/pessoas"><span class="mi">👨‍👩‍👧</span><div>Editar pessoas<span>Adicionar ou tirar alguém do plano</span></div><span class="ar">›</span></a>
+          <a href="#mais/instalar"><span class="mi">📲</span><div>Colocar na tela do celular<span>Abra como um app, com um toque</span></div><span class="ar">›</span></a>
+          <a href="#mais/backup"><span class="mi">💾</span><div>Cópia de segurança<span>Guardar ou recuperar seu progresso</span></div><span class="ar">›</span></a>
+          <a href="#mais/aviso"><span class="mi">ℹ️</span><div>Aviso e fontes<span>Sobre as informações do app</span></div><span class="ar">›</span></a>
+        </div>
+      </div>
+      <div id="m-page" class="hidden">
+        <button type="button" class="back" data-go="mais">‹ Voltar</button>
+        <div id="m-body"></div>
+      </div>
+    </section>
+
+  </main>
+  <nav class="tabs" aria-label="Seções"><div class="in">
+    <a href="#inicio" data-t="inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3z"/></svg>Início</a>
+    <a href="#checklist" data-t="checklist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="m8 9 2 2 4-4M8 16h8"/></svg>Checklist</a>
+    <a href="#familia" data-t="familia"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17.5" cy="9.5" r="2.5"/><path d="M16 14.3c2.9.3 5 2.5 5 5.7"/></svg>Família</a>
+    <a href="#datas" data-t="datas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Datas</a>
+    <a href="#mais" data-t="mais"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>Mais</a>
+  </div></nav>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var KEY = 'mp_plano_v1';
+var CHECK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+
+/* ---------- Dados fixos (taxas oficiais vigentes desde 01/07/2026, migraciones.gov.py) ---------- */
+var TAXA = { temporaria: 2341540, permanente: 2926925, radicacao: 234154, multa: 702462 };
+
+var FASES = [
+ {t:'Decisão', s:'3 a 6 meses antes', it:[
+  ['Fiz as contas da mudança','Inclua reserva de pelo menos 6 meses.'],
+  ['Escolhi a cidade','Se der, visite antes de decidir.'],
+  ['Pedi cotação de seguro saúde','O preço sobe com a idade.'],
+  ['Sei de onde vem minha renda depois da mudança','Ela será pedida na residência permanente.'],
+  ['Conversei com um contador sobre a saída fiscal','Brasil e, se possível, Paraguai.'],
+  ['A família está de acordo','']]},
+ {t:'Documentos no Brasil', s:'2 a 3 meses antes', it:[
+  ['Certidões de nascimento de todos','Peça vias recentes no cartório.'],
+  ['Certidão de casamento ou divórcio, se tiver','Com averbação, se o nome mudou.'],
+  ['Apostila de Haia nas certidões','R$ 45 a R$ 160 por documento, conforme o estado.'],
+  ['Autorização do outro pai, em cartório','Só se um dos pais não for junto com os filhos.'],
+  ['Históricos escolares e diplomas apostilados','Para matrícula e trabalho na área.'],
+  ['Comprovantes de renda organizados','Extratos, contratos, aposentadoria.']]},
+ {t:'Últimos 30 dias', s:'Antes de viajar', it:[
+  ['Antecedentes da Polícia Federal de cada adulto','Gratuito no gov.br. Vale 90 dias.'],
+  ['Apostila nos antecedentes da PF',''],
+  ['Pasta montada: originais + cópias','Uma pasta por pessoa.'],
+  ['Bancos e cartões avisados da viagem',''],
+  ['Celular brasileiro mantido ativo','Para códigos de banco e gov.br.'],
+  ['Aluguel temporário reservado','Para as primeiras semanas.']]},
+ {t:'Na fronteira', s:'Dia da viagem', it:[
+  ['Registrei a entrada no Paraguai','Sem registro: multa de Gs 702.462.'],
+  ['Guardei o comprovante de entrada',''],
+  ['Declarei dinheiro em espécie acima do limite','Brasil: acima de R$ 10 mil. Paraguai: acima de US$ 10 mil.']]},
+ {t:'Migraciones', s:'Semanas 1 e 2', it:[
+  ['Comprei chip paraguaio','Tigo, Personal ou Claro.'],
+  ['Antecedente policial do Paraguai de cada adulto','A partir dos 14 anos.'],
+  ['Cópias autenticadas na escribanía',''],
+  ['Taxa separada: Gs 2.341.540 por pessoa','Em dinheiro sai mais barato.'],
+  ['Pedido da residência temporária feito','Presencial, cada adulto.'],
+  ['Protocolo e comprovante guardados','']]},
+ {t:'Carnê temporário', s:'Meses 3 a 6', it:[
+  ['Retirei o carnê de residente temporário','Válido por 2 anos.'],
+  ['Coloquei o vencimento do carnê na aba Datas','O app calcula a janela da permanente.'],
+  ['Abri conta em banco paraguaio',''],
+  ['Organizei a renda pelo banco, mês a mês','Guarde os extratos.'],
+  ['Comunicação de Saída Definitiva no e-CAC','Até o fim de fevereiro do ano seguinte.'],
+  ['Contratei seguro saúde',''],
+  ['Matriculei os filhos na escola','']]},
+ {t:'Residência permanente', s:'90 dias antes de vencer', it:[
+  ['Conferi os documentos da minha categoria','Resolução DNM 407/2026: renda real e comprovada.'],
+  ['Tirei RUC, se sou autônomo ou comerciante',''],
+  ['Juntei extratos e comprovantes de renda',''],
+  ['Taxa separada: Gs 2.926.925 por pessoa',''],
+  ['Pedido da permanente feito dentro da janela','']]},
+ {t:'Cédula paraguaia', s:'Depois da permanente', it:[
+  ['Pedi o certificado de radicação','Gs 234.154.'],
+  ['Confirmei os requisitos em Identificaciones',''],
+  ['Fiz o pedido da cédula',''],
+  ['Cédula na mão!','Parabéns. Atualize banco e cadastros.']]}
+];
+
+var FRASES = [
+ ['Migraciones', [
+  ['Vengo a solicitar la residencia temporaria Mercosur.','Vim pedir a residência temporária Mercosul.'],
+  ['¿Qué documentos me faltan?','Quais documentos estão faltando?'],
+  ['¿Cuánto es el arancel? ¿Puedo pagar en efectivo?','Qual é a taxa? Posso pagar em dinheiro?'],
+  ['¿Cómo hago el seguimiento de mi expediente?','Como acompanho meu processo?']]],
+ ['Imobiliária', [
+  ['Busco un departamento de un dormitorio.','Procuro um apartamento de um quarto.'],
+  ['¿Cuánto es el alquiler por mes?','Quanto é o aluguel por mês?'],
+  ['¿Qué garantía piden?','Que garantia vocês pedem?'],
+  ['Quiero ver el departamento antes de firmar.','Quero ver o apartamento antes de assinar.']]],
+ ['Banco', [
+  ['Quiero abrir una cuenta.','Quero abrir uma conta.'],
+  ['¿Qué documentos necesito?','De que documentos preciso?'],
+  ['Quiero recibir una transferencia del exterior.','Quero receber uma transferência do exterior.']]],
+ ['Saúde', [
+  ['Necesito un médico.','Preciso de um médico.'],
+  ['Tomo este medicamento todos los días.','Tomo este remédio todos os dias.'],
+  ['Soy alérgico a…','Sou alérgico a…']]]
+];
+
+/* ---------- Estado ---------- */
+var S = load();
+function blank(){ return { v:1, mudanca:'', entrada:'', carne:'', pessoas:[], checks:{}, docs:{}, cambio:1250 }; }
+function load(){
+  try { var raw = localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); if (o && o.v === 1) return Object.assign(blank(), o); } } catch(e){}
+  return blank();
+}
+function save(){
+  try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e){ toast('Não foi possível salvar neste navegador'); }
+}
+try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch(e){}
+
+/* ---------- Utilidades ---------- */
+function $(s, r){ return (r||document).querySelector(s); }
+function $all(s, r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
+function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function pd(s){ if (!s) return null; var p = s.split('-'); if (p.length !== 3) return null; var d = new Date(+p[0], +p[1]-1, +p[2]); return isNaN(d) ? null : d; }
+function today(){ var d = new Date(); return new Date(d.getFullYear(), d.getMonth(), d.getDate()); }
+function addDays(d, n){ var x = new Date(d); x.setDate(x.getDate() + n); return x; }
+function diff(a, b){ return Math.round((a - b) / 86400000); }
+function fmt(d){ return d ? d.toLocaleDateString('pt-BR') : ''; }
+var MES = ['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
+function gs(n){ return 'Gs ' + Math.round(n).toLocaleString('pt-BR'); }
+function brl(n){ return 'R$ ' + n.toLocaleString('pt-BR', {minimumFractionDigits:0, maximumFractionDigits:0}); }
+function uid(){ return Math.random().toString(36).slice(2, 9); }
+var tt;
+function toast(m){ var t = $('#toast'); t.textContent = m; t.classList.add('on'); clearTimeout(tt); tt = setTimeout(function(){ t.classList.remove('on'); }, 1800); }
+function copy(txt){
+  function fallback(){ var ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); toast('Copiado'); } catch(e){ toast('Selecione e copie o texto'); } ta.remove(); }
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(function(){ toast('Copiado'); }, fallback); else fallback();
+}
+
+/* ---------- Checklist ---------- */
+function itemId(f, i){ return 'f' + f + 'i' + i; }
+function counts(){
+  var tot = 0, ok = 0;
+  FASES.forEach(function(F, f){ F.it.forEach(function(_, i){ tot++; if (S.checks[itemId(f, i)]) ok++; }); });
+  return { tot: tot, ok: ok, pct: tot ? Math.round(ok / tot * 100) : 0 };
+}
+function nextItem(){
+  for (var f = 0; f < FASES.length; f++) for (var i = 0; i < FASES[f].it.length; i++) if (!S.checks[itemId(f, i)]) return { f: f, i: i, it: FASES[f].it[i] };
+  return null;
+}
+function renderChecklist(){
+  var c = counts();
+  $('#c-pct').textContent = c.pct + '%';
+  $('#c-bar').style.width = c.pct + '%';
+  $('#c-sub').textContent = c.ok + ' de ' + c.tot + ' tarefas feitas';
+  var openF = nextItem() ? nextItem().f : -1;
+  var h = '';
+  FASES.forEach(function(F, f){
+    var ok = F.it.filter(function(_, i){ return S.checks[itemId(f, i)]; }).length;
+    var done = ok === F.it.length;
+    h += '<details class="phase' + (done ? ' done' : '') + '"' + (f === openF ? ' open' : '') + '><summary><span class="n">' + (done ? '✓' : (f + 1)) + '</span><span class="pt"><b>' + esc(F.t) + '</b><span>' + esc(F.s) + '</span></span><span class="cnt">' + ok + '/' + F.it.length + '</span><svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><div class="items">';
+    F.it.forEach(function(it, i){
+      var id = itemId(f, i);
+      h += '<label class="it"><input type="checkbox" data-ck="' + id + '"' + (S.checks[id] ? ' checked' : '') + '><span class="box">' + CHECK_SVG + '</span><span class="lb"><b>' + esc(it[0]) + '</b>' + (it[1] ? '<span>' + esc(it[1]) + '</span>' : '') + '</span></label>';
+    });
+    h += '</div></details>';
+  });
+  $('#c-list').innerHTML = h;
+}
+
+/* ---------- Documentos por pessoa ---------- */
+function docsFor(p){
+  var adult = p.tipo !== 'crianca'; // 14 anos ou mais
+  var L = [
+    {k:'id', t:'RG ou passaporte válido', ap:false},
+    {k:'nasc', t:'Certidão de nascimento', ap:true}
+  ];
+  if (p.tipo === 'adulto') L.push({k:'civil', t:'Certidão de casamento ou divórcio', ap:true, opt:true});
+  if (adult) L.push({k:'pf', t:'Antecedentes da Polícia Federal', ap:true, date:true});
+  if (adult) L.push({k:'py', t:'Antecedente policial do Paraguai', ap:false});
+  L.push({k:'ent', t:'Comprovante de entrada no Paraguai', ap:false});
+  if (p.tipo !== 'adulto') L.push({k:'aut', t:'Autorização do outro pai (cartório)', ap:true, opt:true});
+  return L;
+}
+function docState(pid, k){ S.docs[pid] = S.docs[pid] || {}; S.docs[pid][k] = S.docs[pid][k] || {}; return S.docs[pid][k]; }
+function docDone(d, st){ if (d.opt && st.na) return true; if (!st.tem) return false; if (d.ap && !st.ap) return false; return true; }
+function personProgress(p){ var L = docsFor(p), ok = 0; L.forEach(function(d){ if (docDone(d, (S.docs[p.id] || {})[d.k] || {})) ok++; }); return { ok: ok, tot: L.length }; }
+function pfInfo(p){
+  var st = (S.docs[p.id] || {}).pf; if (!st || !st.data) return null;
+  var e = pd(st.data); if (!e) return null;
+  var v = addDays(e, 90);
+  var ent = pd(S.entrada), mud = pd(S.mudanca);
+  var alvo = ent ? addDays(ent, 14) : (mud ? addDays(mud, 14) : null); // pedido na Migraciones previsto
+  return { venc: v, left: diff(v, today()), antes: !!(alvo && v < alvo && !(ent && diff(today(), ent) > 14)), alvo: alvo };
+}
+function tipoTxt(t){ return t === 'adulto' ? 'Adulto' : t === 'jovem' ? '14 a 17 anos' : 'Até 13 anos'; }
+function renderFamilia(){
+  if (!S.pessoas.length){ $('#f-list').innerHTML = '<div class="card">Nenhuma pessoa no plano. Toque em "Editar pessoas".</div>'; return; }
+  var h = '';
+  S.pessoas.forEach(function(p){
+    var pr = personProgress(p);
+    h += '<div class="person"><div class="ph"><span class="av">' + esc((p.nome || '?').trim().charAt(0).toUpperCase()) + '</span><div><b>' + esc(p.nome) + '</b><span>' + tipoTxt(p.tipo) + '</span></div><span class="pc">' + pr.ok + '/' + pr.tot + '</span></div>';
+    docsFor(p).forEach(function(d){
+      var st = docState(p.id, d.k);
+      h += '<div class="doc"><div class="dt"><b>' + esc(d.t) + '</b>' + (d.opt ? '<em>se for o caso</em>' : '') + '</div><div class="tags">';
+      h += tag(p.id, d.k, 'tem', 'Tenho', st.tem);
+      if (d.ap) h += tag(p.id, d.k, 'ap', 'Apostilado', st.ap);
+      if (d.opt) h += tag(p.id, d.k, 'na', 'Não se aplica', st.na, true);
+      h += '</div>';
+      if (d.date){
+        h += '<label class="f small" for="pf-' + p.id + '" style="margin-top:10px">Emitido em</label><input type="date" id="pf-' + p.id + '" data-pf="' + p.id + '" value="' + esc(st.data || '') + '">';
+        var inf = pfInfo(p);
+        if (inf){
+          if (inf.left < 0) h += '<span class="warn r">Venceu em ' + fmt(inf.venc) + '. Tire de novo.</span>';
+          else if (inf.left <= 20) h += '<span class="warn r">Vence em ' + inf.left + ' dias (' + fmt(inf.venc) + ')</span>';
+          else if (inf.antes) h += '<span class="warn y">Vence em ' + fmt(inf.venc) + ', antes do seu pedido na Migraciones. Tire de novo perto da viagem.</span>';
+          else h += '<span class="warn g">Válido até ' + fmt(inf.venc) + '</span>';
+        }
+      }
+      h += '</div>';
+    });
+    h += '</div>';
+  });
+  $('#f-list').innerHTML = h;
+}
+function tag(pid, k, field, label, on, na){
+  return '<label class="tg' + (na ? ' na' : '') + (on ? ' on' : '') + '"><input type="checkbox" data-doc="' + pid + '|' + k + '|' + field + '"' + (on ? ' checked' : '') + '>' + (on ? '✓ ' : '') + esc(label) + '</label>';
+}
+
+/* ---------- Datas ---------- */
+function computeDates(){
+  var out = [];
+  var t = today();
+  var mud = pd(S.mudanca), ent = pd(S.entrada), car = pd(S.carne);
+  if (mud){
+    var a = addDays(mud, -45), b = addDays(mud, -7);
+    out.push({ d: a, title: 'Tirar os antecedentes da PF', txt: 'Entre ' + fmt(a) + ' e ' + fmt(b) + '. Eles valem só 90 dias.', kind: '' });
+    out.push({ d: mud, title: 'Mudança', txt: 'Ao cruzar a fronteira, registre a entrada. Sem registro: multa de ' + gs(TAXA.multa) + '.', kind: '' });
+    var saida = ent || mud;
+    var fev = new Date(saida.getFullYear() + 1, 2, 0);
+    out.push({ d: fev, title: 'Comunicação de Saída Definitiva', txt: 'No e-CAC da Receita, até ' + fmt(fev) + '. Fale com seu contador.', kind: '' });
+  }
+  if (ent){
+    out.push({ d: addDays(ent, 14), title: 'Pedir a residência temporária', txt: 'Ideal nas 2 primeiras semanas depois da entrada, com os antecedentes ainda válidos.', kind: '' });
+  }
+  if (car){
+    var abre = addDays(car, -90);
+    out.push({ d: abre, title: 'Abre a janela da permanente', txt: 'De ' + fmt(abre) + ' até ' + fmt(car) + '. Perdeu a janela, perde o direito pelo Mercosul.', kind: 'alert' });
+    out.push({ d: car, title: 'Vence o carnê temporário', txt: 'A permanente precisa ser pedida antes desta data.', kind: 'alert' });
+  }
+  S.pessoas.forEach(function(p){
+    var inf = pfInfo(p);
+    if (inf) out.push({ d: inf.venc, title: 'Vence o antecedente de ' + p.nome, txt: inf.antes ? 'Vence antes do pedido na Migraciones. Tire de novo perto da viagem.' : 'Antecedente da PF emitido há ' + (90 - inf.left) + ' dias.', kind: (inf.left <= 20 || inf.antes) ? 'alert' : '' });
+  });
+  out.sort(function(x, y){ return x.d - y.d; });
+  return out;
+}
+function dateCard(o){
+  var left = diff(o.d, today());
+  var past = left < 0;
+  var lbl = past ? 'Passou' : left === 0 ? 'É hoje' : 'Faltam ' + left + ' dia' + (left === 1 ? '' : 's');
+  return '<div class="date ' + (past ? 'ok' : o.kind) + '"><div class="d"><b>' + o.d.getDate() + '</b><span>' + MES[o.d.getMonth()] + ' ' + String(o.d.getFullYear()).slice(2) + '</span></div><div class="tx"><b>' + esc(o.title) + ' · ' + lbl + '</b><span>' + esc(o.txt) + '</span></div></div>';
+}
+function renderDatas(){
+  $('#d-mud').value = S.mudanca || ''; $('#d-ent').value = S.entrada || ''; $('#d-car').value = S.carne || '';
+  var L = computeDates();
+  $('#d-out').innerHTML = L.length ? L.map(dateCard).join('') : '<div class="card">Preencha as datas acima para ver o seu calendário.</div>';
+}
+
+/* ---------- Início ---------- */
+function renderInicio(){
+  var c = counts();
+  $('#h-pct').textContent = 'Você está ' + c.pct + '% pronto';
+  $('#h-bar').style.width = c.pct + '%';
+  var mud = pd(S.mudanca);
+  var sub = c.ok + ' de ' + c.tot + ' tarefas feitas';
+  if (mud){ var l = diff(mud, today()); if (l > 0) sub += ' · faltam ' + l + ' dias para a mudança'; }
+  $('#h-sub').textContent = sub;
+  var n = nextItem();
+  $('#h-next').innerHTML = n
+    ? '<small>PRÓXIMO PASSO · ' + esc(FASES[n.f].t.toUpperCase()) + '</small><div class="t">' + esc(n.it[0]) + '</div>' + (n.it[1] ? '<div class="h">' + esc(n.it[1]) + '</div>' : '') + '<button type="button" data-done="' + itemId(n.f, n.i) + '">✓ Marcar como feito</button>'
+    : '<small>TUDO PRONTO</small><div class="t">Você concluiu todas as etapas. Parabéns!</div>';
+  var t = today();
+  var up = computeDates().filter(function(o){ return diff(o.d, t) >= 0; }).slice(0, 3);
+  var alerts = computeDates().filter(function(o){ return o.kind === 'alert' && diff(o.d, t) < 0 && /antecedente/i.test(o.title); });
+  var dh = alerts.map(dateCard).join('') + up.map(dateCard).join('');
+  $('#h-dates').innerHTML = dh || '<div class="card small">Coloque a data da mudança na aba <b>Datas</b> para ver seus prazos aqui.</div>';
+  var fh = '';
+  S.pessoas.forEach(function(p){
+    var pr = personProgress(p), pct = pr.tot ? Math.round(pr.ok / pr.tot * 100) : 0, inf = pfInfo(p);
+    fh += '<a href="#familia" class="card" style="display:flex;gap:12px;align-items:center;text-decoration:none;color:inherit"><span class="av" style="background:var(--navy);color:#fff">' + esc((p.nome || '?').trim().charAt(0).toUpperCase()) + '</span><div style="flex:1;min-width:0"><b>' + esc(p.nome) + '</b><div class="bar light" style="height:10px;margin-top:6px"><i style="width:' + pct + '%"></i></div><div class="small muted" style="margin-top:4px">' + pr.ok + ' de ' + pr.tot + ' documentos' + (inf && (inf.left <= 20 || inf.antes) ? ' · <b style="color:#A3161B">' + (inf.left < 0 ? 'antecedente vencido' : inf.left <= 20 ? 'antecedente vence em ' + inf.left + ' dias' : 'antecedente vence antes da Migraciones') + '</b>' : '') + '</div></div></a>';
+  });
+  $('#h-fam').innerHTML = fh;
+}
+
+/* ---------- Pessoas (setup e edição) ---------- */
+var draft = [];
+function personRow(p, i){
+  return '<div class="prow"><input type="text" placeholder="Nome" aria-label="Nome" value="' + esc(p.nome) + '" data-pn="' + i + '" maxlength="30"><select aria-label="Idade" data-pt="' + i + '"><option value="adulto"' + (p.tipo === 'adulto' ? ' selected' : '') + '>Adulto</option><option value="jovem"' + (p.tipo === 'jovem' ? ' selected' : '') + '>14 a 17</option><option value="crianca"' + (p.tipo === 'crianca' ? ' selected' : '') + '>Até 13</option></select>' + (draft.length > 1 ? '<button type="button" class="x" aria-label="Remover" data-px="' + i + '">×</button>' : '') + '</div>';
+}
+function drawDraft(el){ el.innerHTML = draft.map(personRow).join(''); }
+function readDraft(el){
+  $all('[data-pn]', el).forEach(function(inp){ draft[+inp.dataset.pn].nome = inp.value; });
+  $all('[data-pt]', el).forEach(function(s){ draft[+s.dataset.pt].tipo = s.value; });
+}
+function bindDraft(el){
+  el.addEventListener('click', function(e){
+    var x = e.target.closest('[data-px]'); if (!x) return;
+    readDraft(el); draft.splice(+x.dataset.px, 1); drawDraft(el);
+  });
+}
+function commitDraft(el){
+  readDraft(el);
+  var ok = draft.filter(function(p){ return p.nome.trim(); });
+  if (!ok.length) return false;
+  S.pessoas = ok.map(function(p){ return { id: p.id || uid(), nome: p.nome.trim(), tipo: p.tipo }; });
+  return true;
+}
+
+/* ---------- Mais: subpáginas ---------- */
+function pageMigraciones(){
+  return '<div class="sec"><h2>Dia na Migraciones</h2></div><div class="card"><ol class="steps" style="padding-left:20px;margin:0">' +
+   ['Tire antes o antecedente policial do Paraguai de cada adulto.','Autentique as cópias na escribanía. Os originais ficam com você.','Chegue cedo: segunda a sexta, das 7h às 14h30, por ordem de chegada.','Cada adulto precisa ir pessoalmente.','Entregue os documentos na mesa de entrada e assine a declaração jurada.','Pague a taxa (' + gs(TAXA.temporaria) + ' por pessoa) e guarde o comprovante.','Anote o número do seu expediente para acompanhar.'].map(function(s){ return '<li>' + esc(s) + '</li>'; }).join('') +
+   '</ol></div><div class="card"><b>Leve na pasta</b><ul style="padding-left:20px;margin:8px 0 0;line-height:1.5"><li>Originais e cópias autenticadas</li><li>Certidões e antecedentes apostilados</li><li>Comprovante de entrada no Paraguai</li><li>Dinheiro em guaranis para a taxa</li><li>Caneta, água e paciência</li></ul></div><p class="note">Sede: Caballero nº 201 esq. Eligio Ayala, Asunción · +595 21 411 2000. Confirme o escritório da sua cidade em migraciones.gov.py.</p>';
+}
+function pageFrases(){
+  var h = '<div class="sec"><h2>Frases em espanhol</h2></div>';
+  FRASES.forEach(function(g, gi){
+    h += '<div class="card"><b style="font-family:\'Barlow Condensed\',sans-serif;font-weight:900;font-size:19px;text-transform:uppercase">' + esc(g[0]) + '</b>';
+    g[1].forEach(function(f, fi){ h += '<div class="phr"><div class="tx"><b>' + esc(f[0]) + '</b><span>' + esc(f[1]) + '</span></div><button type="button" class="cp" data-copy="' + gi + '|' + fi + '">Copiar</button></div>'; });
+    h += '</div>';
+  });
+  return h;
+}
+function pageCustos(){
+  var n = S.pessoas.length || 1;
+  var ad = S.pessoas.filter(function(p){ return p.tipo === 'adulto'; }).length;
+  var cb = +S.cambio || 1250;
+  var tmp = TAXA.temporaria * n, per = TAXA.permanente * n, rad = TAXA.radicacao * n;
+  var apMin = (ad * 3 + (n - ad)) * 45, apMax = (ad * 3 + (n - ad)) * 160;
+  return '<div class="sec"><h2>Taxas da família</h2></div><div class="card"><div class="small muted">Calculado para ' + n + ' pessoa' + (n > 1 ? 's' : '') + ' do seu plano.</div><table class="tbl" style="margin-top:8px">' +
+    '<tr><td>Residência temporária Mercosul</td><td class="n">' + gs(tmp) + '<br><span class="muted">≈ ' + brl(tmp / cb) + '</span></td></tr>' +
+    '<tr><td>Residência permanente</td><td class="n">' + gs(per) + '<br><span class="muted">≈ ' + brl(per / cb) + '</span></td></tr>' +
+    '<tr><td>Certificado de radicação (cédula)</td><td class="n">' + gs(rad) + '<br><span class="muted">≈ ' + brl(rad / cb) + '</span></td></tr>' +
+    '<tr><td>Apostilas no Brasil (estimativa)</td><td class="n">' + brl(apMin) + ' a ' + brl(apMax) + '</td></tr>' +
+    '<tr class="tot"><td>Total em taxas</td><td class="n">≈ ' + brl((tmp + per + rad) / cb + apMin) + ' a ' + brl((tmp + per + rad) / cb + apMax) + '</td></tr></table>' +
+    '<label class="f" for="cb">Câmbio: quantos guaranis vale R$ 1<span>Referência de julho de 2026: Gs 1.250. Atualize com a cotação do dia.</span></label><input type="number" id="cb" inputmode="numeric" min="100" step="10" value="' + cb + '"></div>' +
+    '<p class="note">Taxas oficiais em dinheiro, vigentes desde 01/07/2026 (migraciones.gov.py). Costumam subir todo ano em julho. Não inclui viagem, aluguel e custo de vida.</p>';
+}
+function pagePessoas(){
+  draft = S.pessoas.map(function(p){ return { id: p.id, nome: p.nome, tipo: p.tipo }; });
+  if (!draft.length) draft = [{ nome: '', tipo: 'adulto' }];
+  return '<div class="sec"><h2>Pessoas do plano</h2></div><div class="card"><div id="e-pessoas"></div><button type="button" class="btn sec2" id="e-add">+ Adicionar pessoa</button><button type="button" class="btn" id="e-ok">Salvar</button></div><p class="note">Ao tirar uma pessoa, os documentos marcados dela são apagados.</p>';
+}
+function pageInstalar(){
+  return '<div class="sec"><h2>Na tela do celular</h2></div>' +
+   '<div class="card" id="inst-btn-wrap" style="' + (deferredPrompt ? '' : 'display:none') + '"><button type="button" class="btn" id="inst-btn">Instalar agora</button></div>' +
+   '<div class="card"><b>iPhone (Safari)</b><ol style="padding-left:20px;line-height:1.5;margin:8px 0 0"><li>Abra este link no Safari.</li><li>Toque no botão Compartilhar (quadrado com seta).</li><li>Escolha "Adicionar à Tela de Início".</li></ol></div>' +
+   '<div class="card"><b>Android (Chrome)</b><ol style="padding-left:20px;line-height:1.5;margin:8px 0 0"><li>Abra este link no Chrome.</li><li>Toque nos três pontinhos ⋮.</li><li>Escolha "Instalar app" ou "Adicionar à tela inicial".</li></ol></div>' +
+   '<p class="note">Seu progresso fica salvo neste celular e neste navegador. Se abrir em outro navegador ou aparelho, use a Cópia de segurança.</p>';
+}
+function pageBackup(){
+  var code = '';
+  try { code = btoa(unescape(encodeURIComponent(JSON.stringify(S)))); } catch(e){}
+  return '<div class="sec"><h2>Cópia de segurança</h2></div><div class="card"><b>Guardar meu progresso</b><p class="small muted">Copie o código e guarde (por exemplo, mande para o seu e-mail). Ele serve para recuperar tudo em outro celular.</p><textarea id="bk-out" rows="4" readonly style="font-size:12px">' + esc(code) + '</textarea><button type="button" class="btn sec2" id="bk-copy">Copiar código</button></div>' +
+    '<div class="card"><b>Recuperar progresso</b><p class="small muted">Cole aqui um código que você guardou.</p><textarea id="bk-in" rows="4" style="font-size:12px"></textarea><button type="button" class="btn" id="bk-load">Recuperar</button></div>' +
+    '<div class="card"><b>Recomeçar do zero</b><p class="small muted">Apaga todas as marcações deste celular.</p><button type="button" class="btn red" id="rs-1">Apagar tudo</button><div id="rs-conf" class="hidden"><p class="small" style="color:#A3161B;font-weight:700">Tem certeza? Isso não pode ser desfeito.</p><div class="row"><button type="button" class="btn sec2 sm" id="rs-no">Cancelar</button><button type="button" class="btn red sm" id="rs-yes">Sim, apagar</button></div></div></div>';
+}
+function pageAviso(){
+  return '<div class="sec"><h2>Aviso e fontes</h2></div><div class="card small" style="line-height:1.5"><p style="margin-top:0"><b>Material informativo.</b> Este app organiza o caminho e não substitui a orientação de advogado, contador ou outro profissional habilitado. A aprovação de residência é decisão exclusiva das autoridades paraguaias.</p><p><b>Regras e taxas mudam.</b> As informações foram conferidas até outubro de 2026. Confirme sempre nos órgãos oficiais antes de pagar ou enviar qualquer documento.</p><p style="margin-bottom:0"><b>Fontes:</b> Dirección Nacional de Migraciones (migraciones.gov.py), páginas "Residencia Temporaria Mercosur" e "Aranceles Migratorios"; Receita Federal (gov.br/receitafederal); Polícia Federal (gov.br/pf).</p></div>';
+}
+var PAGES = { migraciones: pageMigraciones, frases: pageFrases, custos: pageCustos, pessoas: pagePessoas, instalar: pageInstalar, backup: pageBackup, aviso: pageAviso };
+
+/* ---------- Navegação ---------- */
+var TABS = ['inicio', 'checklist', 'familia', 'datas', 'mais'];
+function route(){
+  if (!S.pessoas.length){ showSetup(); return; }
+  $('#v-setup').classList.add('hidden'); $('#v-app').classList.remove('hidden');
+  var h = (location.hash || '#inicio').slice(1).split('/');
+  var tab = TABS.indexOf(h[0]) >= 0 ? h[0] : 'inicio';
+  $all('[data-tab]').forEach(function(s){ s.classList.toggle('hidden', s.dataset.tab !== tab); });
+  $all('nav.tabs a').forEach(function(a){ var on = a.dataset.t === tab; a.classList.toggle('on', on); if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+  if (tab === 'inicio') renderInicio();
+  if (tab === 'checklist') renderChecklist();
+  if (tab === 'familia') renderFamilia();
+  if (tab === 'datas') renderDatas();
+  if (tab === 'mais'){
+    var sub = h[1];
+    if (sub && PAGES[sub]){
+      $('#m-menu').classList.add('hidden'); $('#m-page').classList.remove('hidden');
+      $('#m-body').innerHTML = PAGES[sub]();
+      if (sub === 'pessoas'){ var el = $('#e-pessoas'); drawDraft(el); bindDraft(el); }
+    } else {
+      $('#m-page').classList.add('hidden'); $('#m-menu').classList.remove('hidden');
+    }
+  }
+  window.scrollTo(0, 0);
+}
+function showSetup(){
+  $('#v-app').classList.add('hidden'); $('#v-setup').classList.remove('hidden');
+  draft = [{ nome: '', tipo: 'adulto' }];
+  var el = $('#s-pessoas'); drawDraft(el);
+  if (!el._b){ bindDraft(el); el._b = 1; }
+  $('#s-data').value = S.mudanca || '';
+}
+
+/* ---------- Eventos ---------- */
+document.addEventListener('change', function(e){
+  var t = e.target;
+  if (t.dataset.ck){ if (t.checked) S.checks[t.dataset.ck] = 1; else delete S.checks[t.dataset.ck]; save(); var c = counts(); $('#c-pct').textContent = c.pct + '%'; $('#c-bar').style.width = c.pct + '%'; $('#c-sub').textContent = c.ok + ' de ' + c.tot + ' tarefas feitas';
+    var ph = t.closest('.phase'); var all = $all('[data-ck]', ph); var ok = all.filter(function(x){ return x.checked; }).length; $('.cnt', ph).textContent = ok + '/' + all.length; ph.classList.toggle('done', ok === all.length); $('.n', ph).textContent = ok === all.length ? '✓' : (FASES.length && (Array.prototype.indexOf.call($all('.phase'), ph) + 1));
+    if (t.checked) toast('Feito! ' + c.pct + '% pronto'); }
+  if (t.dataset.doc){ var p = t.dataset.doc.split('|'); var st = docState(p[0], p[1]); st[p[2]] = t.checked; if (p[2] === 'na' && t.checked){ st.tem = false; st.ap = false; } if (p[2] !== 'na' && t.checked) st.na = false; save(); renderFamilia(); }
+  if (t.dataset.pf){ docState(t.dataset.pf, 'pf').data = t.value; if (t.value) docState(t.dataset.pf, 'pf').tem = true; save(); renderFamilia(); }
+  if (t.id === 'd-mud'){ S.mudanca = t.value; save(); renderDatas(); }
+  if (t.id === 'd-ent'){ S.entrada = t.value; save(); renderDatas(); }
+  if (t.id === 'd-car'){ S.carne = t.value; save(); renderDatas(); }
+  if (t.id === 'cb'){ var v = +t.value; if (v >= 100){ S.cambio = v; save(); $('#m-body').innerHTML = pageCustos(); } }
+});
+document.addEventListener('click', function(e){
+  var t = e.target.closest('button, [data-go]'); if (!t) return;
+  if (t.dataset.go){ location.hash = t.dataset.go === 'mais' ? '#mais' : '#mais/' + t.dataset.go; return; }
+  if (t.dataset.done){ S.checks[t.dataset.done] = 1; save(); renderInicio(); toast('Feito! ' + counts().pct + '% pronto'); return; }
+  if (t.dataset.copy){ var p = t.dataset.copy.split('|'); copy(FRASES[+p[0]][1][+p[1]][0]); return; }
+  switch (t.id){
+    case 's-add': readDraft($('#s-pessoas')); draft.push({ nome: '', tipo: 'adulto' }); drawDraft($('#s-pessoas')); $all('[data-pn]', $('#s-pessoas')).pop().focus(); break;
+    case 's-ok':
+      if (!commitDraft($('#s-pessoas'))){ $('#s-err').textContent = 'Coloque o nome de pelo menos uma pessoa.'; return; }
+      S.mudanca = $('#s-data').value || ''; save(); location.hash = '#inicio'; route(); toast('Seu plano está pronto'); break;
+    case 'e-add': readDraft($('#e-pessoas')); draft.push({ nome: '', tipo: 'adulto' }); drawDraft($('#e-pessoas')); break;
+    case 'e-ok':
+      if (!commitDraft($('#e-pessoas'))){ toast('Coloque pelo menos um nome'); return; }
+      var ids = S.pessoas.map(function(p){ return p.id; }); Object.keys(S.docs).forEach(function(k){ if (ids.indexOf(k) < 0) delete S.docs[k]; });
+      save(); toast('Pessoas salvas'); location.hash = '#familia'; break;
+    case 'bk-copy': copy($('#bk-out').value); break;
+    case 'bk-load':
+      try { var o = JSON.parse(decodeURIComponent(escape(atob($('#bk-in').value.trim())))); if (!o || o.v !== 1) throw 0; S = Object.assign(blank(), o); save(); toast('Progresso recuperado'); location.hash = '#inicio'; } catch(err){ toast('Código inválido'); }
+      break;
+    case 'rs-1': $('#rs-conf').classList.remove('hidden'); t.classList.add('hidden'); break;
+    case 'rs-no': $('#rs-conf').classList.add('hidden'); $('#rs-1').classList.remove('hidden'); break;
+    case 'rs-yes': S = blank(); save(); location.hash = ''; route(); break;
+    case 'inst-btn': if (deferredPrompt){ deferredPrompt.prompt(); deferredPrompt = null; } break;
+  }
+});
+window.addEventListener('hashchange', route);
+
+/* Instalação (Android) */
+var deferredPrompt = null;
+window.addEventListener('beforeinstallprompt', function(e){ e.preventDefault(); deferredPrompt = e; var w = $('#inst-btn-wrap'); if (w) w.style.display = ''; });
+
+/* Aviso para navegador do Instagram/Facebook */
+if (/Instagram|FBAN|FBAV/i.test(navigator.userAgent)) $('#inapp').classList.remove('hidden');
+
+if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(function(){});
+
+route();
+})();
+</script>
+</body>
+</html>
