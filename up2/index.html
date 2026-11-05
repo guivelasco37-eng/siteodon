@@ -4,15 +4,15 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:Lato,system-ui,sans-serif;background:#F6F0E4;color:#2B2B2B;line-height:1.55;font-size:17px}
 .wrap{max-width:760px;margin:0 auto;padding:0 18px}
-.barra{background:#1a1a1a;color:#fff;padding:12px 0 14px;text-align:center}
-.barra p{font-weight:900;font-size:14px;letter-spacing:.5px;margin-bottom:8px}
-.barra p span{color:#ff5a4f}
-.trilho{height:16px;background:#3a3a3a;border-radius:20px;overflow:hidden;max-width:620px;margin:0 auto;border:1px solid #555}
+.barra{background:#fff;color:#1F3A5F;padding:14px 16px 12px;text-align:center;border-bottom:1px solid #E4D6B5;box-shadow:0 4px 16px rgba(31,58,95,.06)}
+.barra p{font-weight:900;font-size:13.5px;letter-spacing:.4px;margin-bottom:9px}
+.barra p span{color:#d4231a}
+.trilho{height:14px;background:#F1E9D8;border-radius:20px;overflow:hidden;max-width:560px;margin:0 auto;border:1px solid #E4D6B5}
 .enche{height:100%;background:repeating-linear-gradient(45deg,#e0261b,#e0261b 12px,#ff4a3d 12px,#ff4a3d 24px);border-radius:20px;animation:corre 1s linear infinite,cresce 1.6s ease-out}
 @keyframes corre{from{background-position:0 0}to{background-position:34px 0}}
 @keyframes cresce{from{width:0}}
-.pct{font-family:Montserrat;font-weight:900;font-size:13px;margin-top:6px;color:#ff8a82}
-.alerta{background:#e0261b;color:#fff;text-align:center;font-weight:900;font-size:15px;padding:9px 12px;letter-spacing:.3px}
+.pct{font-family:Montserrat;font-weight:900;font-size:12.5px;margin-top:7px;color:#d4231a}
+.alerta{background:#1F3A5F;color:#F6F0E4;text-align:center;font-weight:700;font-size:14.5px;padding:9px 12px}
 h1{font-family:Montserrat,sans-serif;font-weight:900;text-transform:uppercase;color:#1F3A5F;font-size:clamp(26px,6.4vw,40px);line-height:1.08;text-align:center;margin:26px 0 12px;letter-spacing:-.5px}
 h1 em{font-style:normal;background:#C9A24A;color:#1F3A5F;padding:0 8px;border-radius:6px}
 .sub{text-align:center;font-size:18px;color:#4a4436;margin-bottom:18px}
@@ -35,12 +35,18 @@ h2{font-family:'Cormorant Garamond',serif;color:#1F3A5F;font-size:32px;line-heig
 .mock.capa{max-width:280px;filter:drop-shadow(0 18px 24px rgba(0,0,0,.3))}
 .box{background:#1F3A5F;color:#F6F0E4;border-radius:14px;padding:18px;margin:22px 0;text-align:center}
 .box b{color:#E3C46F}
-.gar{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid #E4D6B5;border-radius:14px;padding:16px;margin:22px 0}
-.gar .s{flex:0 0 74px;height:74px;border-radius:50%;background:#C9A24A;color:#1F3A5F;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Montserrat;font-weight:900;line-height:1}
-.gar .s small{font-size:10px}.gar p{font-size:15px}
+.gar{background:linear-gradient(160deg,#1F3A5F,#16304F);color:#F6F0E4;border-radius:18px;padding:26px 20px 22px;margin:28px 0;text-align:center;position:relative;box-shadow:0 14px 34px rgba(31,58,95,.25)}
+.gar svg{display:block;margin:-62px auto 8px;filter:drop-shadow(0 8px 14px rgba(0,0,0,.3))}
+.gar h3{font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1.1;color:#fff;margin-bottom:8px}
+.gar p{font-size:15.5px;color:#E8E0CE;max-width:520px;margin:0 auto 14px}
+.gar .ic{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.gar .ic span{border:1px solid rgba(227,196,111,.6);border-radius:30px;padding:7px 13px;font-size:13px;font-weight:700;color:#E3C46F}
 .cita{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:#1F3A5F;text-align:center;margin:18px 0}
 a.volta{display:inline-block;background:linear-gradient(180deg,#C8743F,#B5653A);color:#fff;font-weight:900;text-decoration:none;padding:16px 26px;border-radius:12px;box-shadow:0 8px 20px rgba(181,101,58,.35)}
 html{scroll-behavior:smooth}
+.widget.plain{background:none;border:0;box-shadow:none;padding:6px 0;margin:8px 0}
+.oculto{display:none}.aparece{animation:surge .7s ease-out}@keyframes surge{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.espera{text-align:center;color:#7a6f5c;font-size:14.5px;margin:14px 0}
 footer{text-align:center;font-size:12.5px;color:#8a7f6a;padding:26px 18px 40px}
 @media(max-width:480px){body{font-size:16px}.preco b{font-size:38px}h2{font-size:27px}}
 </style>
@@ -48,21 +54,23 @@ footer{text-align:center;font-size:12.5px;color:#8a7f6a;padding:26px 18px 40px}
 <div class="barra"><p>⚠️ <span>NO CIERRES ESTA PÁGINA</span> · Paso 4 de 4</p><div class="trilho"><div class="enche" style="width:90%"></div></div><div class="pct">TU PEDIDO ESTÁ 90% COMPLETO</div></div>
 <div class="alerta">Ya casi terminamos ✅ · Tu material ya está en tu correo</div>
 <div class="wrap">
-<h1>Último paso: <em>tus 200 metáforas</em> en el bolsillo</h1><p class="sub">Con 200 fichas, lo difícil no es tener la metáfora. Es encontrar la correcta en el momento.</p>
+<h1>Último paso: <em>tus 200 metáforas</em> en el bolsillo</h1>
 <div class="vsl"><video id="vsl" src="/videos/up2.mp4" poster="/assets/up2_capa.webp" controls playsinline preload="metadata"
 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"></video>
 <div class="ph" style="display:none"><b>▶ Mira el video</b><span>El video se está cargando…</span></div></div>
 <p class="som">🔊 Activa el sonido · Dura menos de 3 minutos</p>
-<div class="widget" id="oferta"><p class="preco">Oferta única para quien ya tiene las metáforas<br>De <s>US$ 37</s> por solo <b>US$ 14,90</b><small>💳 Pagas en tu moneda local · Se agrega a tu compra con un clic</small></p><!-- HOTMART - Sales Funnel Widget -->
+<div id="espera" class="espera">⏳ Mira el video: la oferta aparece en unos segundos…</div>
+<div class="widget plain oculto" id="oferta"><!-- HOTMART - Sales Funnel Widget -->
 <div id="hotmart-sales-funnel"></div>
 <script src="https://checkout.hotmart.com/lib/hotmart-checkout-elements.js"></script>
 <script>checkoutElements.init('salesFunnel').mount('#hotmart-sales-funnel')</script>
 <!-- HOTMART - Sales Funnel Widget --></div>
-<h2>La metáfora correcta en 10 segundos</h2><p class="sub">La persona está frente a ti, llorando. Escribes lo que te dijo y el app te muestra la ficha: la imagen, la frase para empezar, las preguntas y la oración.</p>
+<div class="oculto" id="mostra"><h2>La metáfora correcta en 10 segundos</h2><p class="sub">La persona está frente a ti, llorando. Escribes lo que te dijo y el app te muestra la ficha: la imagen, la frase para empezar, las preguntas y la oración.</p>
 <div class="telas"><img src="/assets/app_1_inicio.webp" alt=""><img src="/assets/app_5_busca.webp" alt=""><img src="/assets/app_3_ficha.webp" alt=""></div>
 <h2>Lo que recibes hoy</h2><ul class="lista"><li>Las <b>200 metáforas</b> dentro de un app en tu celular</li><li><b>Búsqueda por emoción o por frase</b>: «perdí a mi mamá», «no puedo perdonar»…</li><li>La metáfora correcta <b>en menos de 10 segundos</b></li><li><b>Favoritos</b> y una <b>metáfora del día</b> para ir aprendiéndolas</li><li><b>Funciona sin internet</b>, en hospitales y lugares sin señal</li><li>Se instala desde el navegador, <b>sin ocupar espacio</b></li></ul>
-<img class="mock" src="/assets/up2_capa.webp" alt="Consejero de Bolsillo"><div class="gar"><div class="s">30<small>DÍAS</small></div><p><b>Garantía incondicional de 30 días.</b> Si no te ayuda, te devolvemos el 100% de tu dinero. Sin preguntas.</p></div>
-<p style="text-align:center;margin:10px 0 0"><a class="volta" href="#oferta">QUIERO APROVECHAR ESTA OFERTA ↑</a></p>
+<img class="mock" src="/assets/up2_capa.webp" alt="Consejero de Bolsillo"><div class="gar"><svg viewBox="0 0 200 200" width="118" height="118"><defs><path id="cg" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/></defs><circle cx="100" cy="100" r="96" fill="#C9A24A"/><circle cx="100" cy="100" r="86" fill="none" stroke="#F6F0E4" stroke-width="2" stroke-dasharray="4 5"/><circle cx="100" cy="100" r="58" fill="#1F3A5F"/><text font-family="Lato" font-weight="900" font-size="15" letter-spacing="5" fill="#1F3A5F"><textPath href="#cg">GARANTÍA INCONDICIONAL •</textPath></text><text x="100" y="106" text-anchor="middle" font-family="Cormorant Garamond" font-weight="700" font-size="52" fill="#F6F0E4">30</text><text x="100" y="130" text-anchor="middle" font-family="Lato" font-weight="900" font-size="14" letter-spacing="3" fill="#C9A24A">DÍAS</text></svg><h3>Tu compra está 100% protegida</h3><p>Pruébalo durante 30 días. Si no te ayuda a acompañar mejor, te devolvemos todo tu dinero. Sin preguntas y sin complicaciones.</p><div class="ic"><span>🔒 Pago seguro</span><span>⚡ Acceso inmediato</span><span>↩️ Reembolso garantizado</span></div></div>
+</div>
+<script>setTimeout(function(){document.getElementById("espera").remove();["oferta","mostra"].forEach(function(i){var e=document.getElementById(i);e.classList.remove("oculto");e.classList.add("aparece")})},30000);</script>
 </div>
 <footer>© 2026 Metáforas Bíblicas en Español · Pago procesado por Hotmart · Garantía de 30 días<br>Recurso de apoyo pastoral y espiritual. No sustituye la atención de un profesional de la salud.</footer>
 </body></html>
