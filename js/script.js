@@ -2,8 +2,6 @@
 const CHECKOUT_BASICO   = "https://pay.hotmart.com/X108359046Q?checkoutMode=10";
 const CHECKOUT_COMPLETO = "https://pay.hotmart.com/R108359005R?checkoutMode=10";
 const CHECKOUT_POPUP    = "https://pay.hotmart.com/R108359005R?off=h4qoimow&checkoutMode=10";   // oferta do popup ao clicar no básico
-// Hotmart converte com ~10,5% acima do câmbio comercial (medido em 05/11/2026: US$ 6,90 = R$ 41,69)
-const FATOR_HOTMART = 1.105;
 // ======================
 
 // ---------- Data de hoje (no fuso da pessoa) ----------
@@ -42,7 +40,7 @@ function formata(v, moeda, pais) {
   return new Intl.NumberFormat(loc, { style:'currency', currency:moeda, minimumFractionDigits:dec, maximumFractionDigits:dec }).format(v);
 }
 function pinta(moeda, taxa, pais) {
-  const loc = usd => moeda === 'USD' ? usd : arredonda(usd * taxa * FATOR_HOTMART);
+  const loc = usd => moeda === 'USD' ? usd : arredonda(usd * taxa);
   qs('.p[data-usd]').forEach(el => { el.textContent = formata(loc(parseFloat(el.dataset.usd)), moeda, pais); });
   qs('.p[data-dif]').forEach(el => {           // diferença exata entre dois preços já arredondados
     const [a, b] = el.dataset.dif.split('-').map(parseFloat);
