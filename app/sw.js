@@ -1,0 +1,3 @@
+const C='consejero-v2';const A=['./','index.html','fichas.js','manifest.json','icon-192.png'
+,'img/ansiedad_1.webp','img/ansiedad_2.webp','img/ansiedad_3.webp','img/ansiedad_4.webp','img/duelo_1.webp','img/duelo_2.webp','img/duelo_3.webp','img/duelo_4.webp','img/identidad_1.webp','img/identidad_2.webp','img/identidad_3.webp','img/identidad_4.webp','img/miedo_1.webp','img/miedo_2.webp','img/miedo_3.webp','img/miedo_4.webp','img/perdon_1.webp','img/perdon_2.webp','img/perdon_3.webp','img/perdon_4.webp'];
+self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.addAll(A))));self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));

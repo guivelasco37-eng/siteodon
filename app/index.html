@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1F3A5F">
+<title>Consejero de Bolsillo</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--azul:#1F3A5F;--ouro:#C9A24A;--terra:#B5653A;--creme:#F6F0E4;--txt:#2B2B2B}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:Lato,system-ui,sans-serif;background:var(--creme);color:var(--txt);max-width:520px;margin:0 auto;min-height:100vh;padding-bottom:78px}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;color:var(--azul)}
+.cab{background:var(--azul);color:var(--creme);padding:18px 18px 22px;border-radius:0 0 24px 24px}
+.cab small{color:var(--ouro);font-weight:900;letter-spacing:2.5px;font-size:11px}
+.cab h1{color:#fff;font-size:30px;line-height:1.1;margin:4px 0 14px}
+.busca{display:flex;align-items:center;gap:8px;background:#fff;border-radius:14px;padding:12px 14px}
+.busca input{border:0;outline:0;flex:1;font-size:16px;font-family:Lato}
+.sec{padding:18px 16px 4px}
+.sec h2{font-size:24px;margin-bottom:10px}
+.dia{display:block;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 6px 18px rgba(31,58,95,.12);text-decoration:none;color:inherit}
+.dia img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block}
+.dia div{padding:12px 14px}.dia small{color:var(--terra);font-weight:900;letter-spacing:2px;font-size:11px}
+.dia h3{font-size:24px}.dia p{font-size:14px;color:#5a5243}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.chip{background:#fff;border:1px solid #E4D6B5;border-radius:14px;padding:12px;font-weight:700;font-size:14.5px;color:var(--azul);text-align:left;font-family:Lato;display:flex;align-items:center;gap:8px;cursor:pointer}
+.chip .e{font-size:20px}.chip.off{opacity:.45}
+.lista a{display:flex;gap:12px;align-items:center;background:#fff;border-radius:14px;padding:8px;margin-bottom:10px;text-decoration:none;color:inherit;box-shadow:0 3px 10px rgba(0,0,0,.05)}
+.lista img{width:92px;height:62px;object-fit:cover;border-radius:10px}
+.lista b{font-family:'Cormorant Garamond',serif;font-size:21px;color:var(--azul);display:block;line-height:1.1}
+.lista small{color:var(--terra);font-size:13px}
+.volta{display:flex;align-items:center;gap:8px;padding:14px 16px;font-weight:700;color:var(--azul);text-decoration:none}
+.ficha img.ilu{width:100%;aspect-ratio:3/2;object-fit:cover;display:block}
+.ficha .t{padding:16px}
+.ficha .tema{font-size:11px;letter-spacing:2px;color:var(--terra);font-weight:900}
+.ficha h1{font-size:34px;line-height:1.05;margin:4px 0}
+.ficha .pas{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px;color:var(--terra)}
+.bloco{background:#fff;border-radius:14px;padding:14px;margin-top:12px}
+.lab{font-size:11px;letter-spacing:2px;color:var(--ouro);font-weight:900;margin-bottom:6px}
+.bloco p,.bloco li{font-size:16px;line-height:1.5}
+.bloco ol{padding-left:20px}
+.ens{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;color:var(--azul);border-left:4px solid var(--terra);padding-left:12px;margin-top:14px;line-height:1.2}
+.ora{background:var(--azul);color:var(--creme);border-radius:14px;padding:14px;margin-top:12px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:21px}
+.ora .lab{font-family:Lato;font-style:normal}
+.der{background:#F3E3D3;color:#7A4A2A;border-radius:12px;padding:12px;margin-top:12px;font-size:14.5px}
+.acoes{display:flex;gap:10px;margin-top:14px}
+.acoes button{flex:1;border:2px solid var(--azul);background:#fff;color:var(--azul);border-radius:12px;padding:12px;font-weight:900;font-size:14.5px;font-family:Lato;cursor:pointer}
+.acoes button.on{background:var(--terra);border-color:var(--terra);color:#fff}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:520px;background:#fff;border-top:1px solid #E4D6B5;display:flex;padding:8px 0 calc(8px + env(safe-area-inset-bottom))}
+.nav a{flex:1;text-align:center;text-decoration:none;color:#8a7f6a;font-size:12px;font-weight:700}
+.nav a span{display:block;font-size:22px}
+.nav a.on{color:var(--azul)}
+.vazio{text-align:center;color:#7a6f5c;padding:30px 10px}
+.toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:var(--azul);color:#fff;padding:10px 16px;border-radius:20px;font-size:14px;opacity:0;transition:.3s;pointer-events:none}
+.toast.on{opacity:1}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<nav class="nav"><a href="#/" data-n="inicio"><span>🏠</span>Inicio</a><a href="#/buscar" data-n="buscar"><span>🔎</span>Buscar</a><a href="#/favoritos" data-n="favoritos"><span>❤️</span>Favoritos</a></nav>
+<div class="toast"></div>
+<script src="fichas.js"></script>
+<script>
+const TEMAS=[["Ansiedad y Preocupación","😟","ansiedad"],["Miedo","😨","miedo"],["Culpa","😞","culpa"],["Vergüenza","🙈","verguenza"],["Perdonar a Otros","🤝","perdon"],["Recibir el Perdón","🕊️","perdondios"],["Duelo y Pérdida","🖤","duelo"],["Soledad","🌙","soledad"],["Rechazo y Abandono","💔","rechazo"],["Identidad y Autoestima","🏺","identidad"],["Desánimo","🌧️","desanimo"],["Ira","🔥","ira"],["Amargura","🍂","amargura"],["Crisis de Fe","❓","fe"],["Matrimonio","💍","matrimonio"],["Heridas con los Padres","🏠","padres"],["Adicciones","⛓️","adicciones"],["Propósito","🧭","proposito"],["La Espera","⏳","espera"],["Cansancio","🪫","cansancio"]];
+const SIN={triste:"duelo",tristeza:"duelo",murio:"duelo",murió:"duelo",perdi:"duelo",perdí:"duelo",llorar:"duelo",nervios:"ansiedad",preocupa:"ansiedad",panico:"ansiedad",pánico:"ansiedad",estres:"ansiedad",estrés:"ansiedad",temor:"miedo",asustad:"miedo",valgo:"identidad",autoestima:"identidad",fracaso:"identidad",feo:"identidad",rencor:"perdon",perdonar:"perdon",traicion:"perdon",traición:"perdon",culpa:"culpa",culpable:"culpa",arrepent:"culpa",vergüenza:"verguenza",verguenza:"verguenza",juzga:"verguenza",perdone:"perdondios",perdonará:"perdondios",alejé:"perdondios",sola:"soledad",solo:"soledad",olvidad:"soledad",dejó:"rechazo",abandon:"rechazo",rechaz:"rechazo",divorci:"rechazo",ganas:"desanimo",cansad:"cansancio",agotad:"cansancio",deprim:"desanimo",enoj:"ira",furios:"ira",grit:"ira",injust:"amargura",resentim:"amargura",envidia:"amargura",dud:"fe",existe:"fe",creer:"fe",esposo:"matrimonio",esposa:"matrimonio",pareja:"matrimonio",infiel:"matrimonio",pele:"matrimonio",papá:"padres",mamá:"padres",padre:"padres",madre:"padres",hijo:"padres",adicci:"adicciones",alcohol:"adicciones",droga:"adicciones",vicio:"adicciones",propósito:"proposito",decisión:"proposito",trabajo:"proposito",espera:"espera",tarda:"espera",ministerio:"cansancio",servir:"cansancio"};
+const $=s=>document.querySelector(s), app=$('#app');
+const favs=()=>JSON.parse(localStorage.getItem('favs')||'[]');
+const toast=m=>{const t=$('.toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1800)};
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const item=f=>`<a href="#/ficha/${f.id}"><img src="img/${f.ilu}.webp" alt=""><div><b>${f.titulo}</b><small>📖 ${f.pasaje}</small></div></a>`;
+function inicio(){
+  const d=FICHAS[Math.floor(Date.now()/864e5)%FICHAS.length];
+  app.innerHTML=`<header class="cab"><small>CONSEJERO DE BOLSILLO</small><h1>¿Qué está viviendo<br>la persona?</h1>
+  <a class="busca" href="#/buscar" style="text-decoration:none;color:#8a7f6a">🔎 <span>Escribe una emoción o situación…</span></a></header>
+  <section class="sec"><h2>Metáfora del día</h2><a class="dia" href="#/ficha/${d.id}"><img src="img/${d.ilu}.webp" alt=""><div><small>${d.tema.toUpperCase()}</small><h3>${d.titulo}</h3><p>${d.ensena}</p></div></a></section>
+  <section class="sec"><h2>Elige el tema</h2><div class="chips">${TEMAS.map(([n,e,k])=>`<button class="chip${k?'':' off'}" data-k="${k||''}"><span class="e">${e}</span>${n}</button>`).join('')}</div></section>`;
+  app.querySelectorAll('.chip').forEach(b=>b.onclick=()=>location.hash='#/tema/'+b.dataset.k);
+}
+function tema(k){
+  const fs=FICHAS.filter(f=>f.id.startsWith(k+'_'));
+  app.innerHTML=`<a class="volta" href="#/">‹ Volver</a><section class="sec" style="padding-top:0"><h2>${fs[0].tema}</h2><div class="lista">${fs.map(item).join('')}</div></section>`;
+}
+function ficha(id){
+  const f=FICHAS.find(x=>x.id===id); if(!f) return inicio();
+  const fav=favs().includes(id);
+  app.innerHTML=`<div class="ficha"><a class="volta" href="javascript:history.back()">‹ Volver</a><img class="ilu" src="img/${f.ilu}.webp" alt=""><div class="t">
+  <div class="tema">${f.tema.toUpperCase()}</div><h1>${f.titulo}</h1><div class="pas">📖 ${f.pasaje}</div>
+  <div class="bloco"><div class="lab">LA IMAGEN</div><p>${esc(f.imagen)}</p></div>
+  <div class="ens">${esc(f.ensena)}</div>
+  <div class="bloco"><div class="lab">CÓMO INTRODUCIRLA</div><p>${esc(f.intro)}</p></div>
+  <div class="bloco"><div class="lab">PREGUNTAS PARA PROFUNDIZAR</div><ol>${f.preguntas.map(p=>`<li>${esc(p)}</li>`).join('')}</ol></div>
+  <div class="bloco"><div class="lab">EJERCICIO · 5 MIN</div><p>${esc(f.ejercicio)}</p></div>
+  <div class="ora"><div class="lab">ORACIÓN DE CIERRE</div>${esc(f.oracion)}</div>
+  ${f.derivar?`<div class="der">⚠️ <b>Cuándo derivar:</b> ${esc(f.derivar)}</div>`:''}
+  <div class="acoes"><button class="fav${fav?' on':''}">${fav?'❤️ Guardada':'🤍 Guardar'}</button><button class="cop">📋 Copiar oración</button></div></div></div>`;
+  app.querySelector('.fav').onclick=e=>{let l=favs();l=l.includes(id)?l.filter(x=>x!==id):[...l,id];localStorage.setItem('favs',JSON.stringify(l));ficha(id);toast(l.includes(id)?'Guardada en favoritos':'Quitada de favoritos')};
+  app.querySelector('.cop').onclick=()=>{navigator.clipboard?.writeText(f.oracion);toast('Oración copiada')};
+  scrollTo(0,0);
+}
+function buscar(q=''){
+  app.innerHTML=`<header class="cab"><small>BUSCAR</small><h1>¿Qué siente la persona?</h1><label class="busca">🔎 <input id="q" placeholder="ej.: culpa, perdí a mi mamá, miedo…" value="${esc(q)}"></label></header><section class="sec"><div class="lista" id="res"></div></section>`;
+  const inp=$('#q'), res=$('#res');
+  const run=()=>{const v=inp.value.toLowerCase().trim(); if(!v){res.innerHTML='<p class="vazio">Escribe una emoción o una situación.</p>';return}
+    const temas=new Set(Object.entries(SIN).filter(([k])=>v.includes(k)).map(([,t])=>t));
+    const GEN=['padres','soledad','proposito'];const rk=f=>{const k=f.id.split('_')[0];return temas.has(k)?(GEN.includes(k)?1:0):2};
+    const r=FICHAS.filter(f=>temas.has(f.id.split('_')[0])||(f.titulo+' '+f.tema+' '+f.imagen+' '+f.pasaje).toLowerCase().includes(v)).sort((a,b)=>rk(a)-rk(b));
+    res.innerHTML=r.length?r.map(item).join(''):'<p class="vazio">No encontramos nada. Prueba con otra palabra.</p>'};
+  inp.oninput=run; run(); inp.focus();
+}
+function favoritos(){
+  const l=favs().map(id=>FICHAS.find(f=>f.id===id)).filter(Boolean);
+  app.innerHTML=`<header class="cab"><small>TUS FAVORITOS</small><h1>Metáforas guardadas</h1></header><section class="sec"><div class="lista">${l.length?l.map(item).join(''):'<p class="vazio">Toca 🤍 Guardar en una ficha para tenerla aquí.</p>'}</div></section>`;
+}
+function rota(){
+  const [,r,p]=location.hash.split('/');
+  document.querySelectorAll('.nav a').forEach(a=>a.classList.toggle('on',a.dataset.n===(r||'inicio')));
+  if(r==='tema')tema(p); else if(r==='ficha')ficha(p); else if(r==='buscar')buscar(decodeURIComponent(p||'')); else if(r==='favoritos')favoritos(); else inicio();
+}
+addEventListener('hashchange',rota); rota();
+if('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('sw.js');
+</script>
+</body>
+</html>
