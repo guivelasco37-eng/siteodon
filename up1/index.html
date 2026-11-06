@@ -18,6 +18,10 @@ h1 em{font-style:normal;background:#C9A24A;color:#1F3A5F;padding:0 8px;border-ra
 .sub{text-align:center;font-size:18px;color:#4a4436;margin-bottom:18px}
 .vsl{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.25);background:#000;aspect-ratio:9/16;max-width:360px;margin:0 auto 10px}
 .vsl video{width:100%;height:100%;display:block;background:#000}
+.vsl .som{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.35);cursor:pointer;border:0;width:100%}
+.vsl .som span{background:#e0261b;color:#fff;font-family:Montserrat,sans-serif;font-weight:800;font-size:19px;padding:16px 22px;border-radius:14px;box-shadow:0 10px 26px rgba(0,0,0,.45);animation:pulsa 1.2s infinite;line-height:1.3;text-align:center}
+@keyframes pulsa{50%{transform:scale(1.06)}}
+.vsl video{pointer-events:none}
 .vsl .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;background:linear-gradient(135deg,#13243c,#1F3A5F);text-align:center;padding:20px}
 .vsl .ph b{font-family:Montserrat;font-size:20px}.vsl .ph span{opacity:.7;font-size:14px;margin-top:6px}
 .som{text-align:center;font-size:14px;color:#7a6f5c;margin-bottom:20px}
@@ -69,10 +73,10 @@ footer{text-align:center;font-size:12.5px;color:#8a7f6a;padding:26px 18px 40px}
 <div class="alerta">Tu compra fue aprobada ✅ · Tu acceso ya está en camino a tu correo</div>
 <div class="wrap">
 <h1>Tu compra está casi lista… <em>mira esto antes</em></h1>
-<div class="vsl"><video id="vsl" src="/videos/up1.mp4" poster="/assets/wa_1_notificacao.webp" controls playsinline preload="metadata"
+<div class="vsl"><video id="vsl" src="/videos/up1.mp4" poster="/assets/wa_1_notificacao.webp" autoplay muted playsinline preload="auto" disablepictureinpicture controlslist="nodownload nofullscreen noplaybackrate"
 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"></video>
-<div class="ph" style="display:none"><b>▶ Mira el video</b><span>El video se está cargando…</span></div></div>
-<p class="som">🔊 Activa el sonido · Dura menos de 3 minutos</p>
+<div class="ph" style="display:none"><b>▶ Mira el video</b><span>El video se está cargando…</span></div><button id="som" class="som"><span>🔊 Tu video ya empezó<br>Toca para activar el sonido</span></button></div>
+<p class="som">⏱️ Dura menos de 3 minutos</p>
 <div id="espera" class="espera">⏳ Mira el video: la oferta aparece en unos segundos…</div>
 <div class="widget plain oculto" id="oferta"><!-- HOTMART - Sales Funnel Widget -->
 <div id="hotmart-sales-funnel"></div>
@@ -88,4 +92,9 @@ onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
 <script>setTimeout(function(){document.getElementById("espera").remove();["oferta","mostra"].forEach(function(i){var e=document.getElementById(i);e.classList.remove("oculto");e.classList.add("aparece")})},30000);</script>
 </div>
 <footer>© 2026 Metáforas Bíblicas en Español · Pago procesado por Hotmart · Garantía de 30 días<br>Recurso de apoyo pastoral y espiritual. No sustituye la atención de un profesional de la salud.</footer>
+<script>(function(){var v=document.getElementById("vsl"),b=document.getElementById("som");if(!v)return;v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});
+b.addEventListener("click",function(){v.currentTime=0;v.muted=false;v.play();b.remove()});
+v.addEventListener("pause",function(){if(!v.ended)v.play()});
+document.addEventListener("visibilitychange",function(){if(!document.hidden&&!v.ended)v.play()});
+v.addEventListener("contextmenu",function(e){e.preventDefault()})})();</script>
 </body></html>
